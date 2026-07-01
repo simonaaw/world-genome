@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curriculum - World Genome Academy</title>
+<meta name="description" content="Seven modular hands-on units turn students into citizen scientists: collect samples, sequence eDNA with portable Oxford Nanopore technology, analyze biodiversity, and share real discoveries.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Schibsted+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Curriculum-specific touches */
+  .unit-card .card-num{
+    font-size:3rem;
+    color:rgba(255,255,255,.95);
+  }
+  .unit-tag{
+    display:inline-block;
+    font-family:var(--font-display);
+    font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin-bottom:.4rem;
+  }
+  .eco-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+  .eco-item{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(14,79,99,.10)}
+  .eco-media{aspect-ratio:4/5;position:relative;overflow:hidden}
+  .eco-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .eco-item:hover .eco-media img{transform:scale(1.06)}
+  .eco-cap{position:absolute;inset:auto 0 0 0;padding:1.1rem 1.1rem 1.2rem;color:#fff;
+    background:linear-gradient(180deg,transparent,rgba(7,42,56,.85));}
+  .eco-cap h3{font-size:1.05rem;margin:0 0 .15rem}
+  .eco-cap p{font-size:.84rem;color:rgba(255,255,255,.82);margin:0}
+  @media (max-width:900px){.eco-strip{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){.eco-strip{grid-template-columns:1fr}}
+
+  /* Framework comparative figure */
+  .frame-fig{
+    position:relative;aspect-ratio:1/1;border-radius:var(--radius);
+    overflow:hidden;box-shadow:var(--shadow);
+    background:radial-gradient(120% 120% at 80% 0%,rgba(22,184,166,.28),transparent 55%),
+      linear-gradient(150deg,var(--primary),var(--deep));
+    display:grid;place-items:center;padding:2rem;color:#fff;
+  }
+  .frame-fig::after{content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.15) 1.3px,transparent 1.5px);
+    background-size:20px 20px;opacity:.45}
+  .frame-rings{position:relative;z-index:1;width:100%;max-width:340px}
+  .frame-rings svg{width:100%;height:auto}
+  .frame-cap{position:relative;z-index:1;text-align:center;margin-top:1.4rem;
+    font-family:var(--font-display);font-weight:600;letter-spacing:.04em;font-size:.95rem}
+
+  /* Outputs columns */
+  .out-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+  .out-card{background:var(--surface);border-radius:var(--radius);padding:1.8rem 1.6rem;
+    border:1px solid rgba(14,79,99,.10);box-shadow:var(--shadow);position:relative}
+  .out-card .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+    background:linear-gradient(150deg,var(--primary),var(--accent));color:#fff;margin-bottom:1rem}
+  .out-card .ic svg{width:24px;height:24px}
+  .out-card h3{margin-bottom:.4rem}
+  .out-card p{color:var(--muted);margin:0;font-size:.96rem}
+  @media (max-width:820px){.out-grid{grid-template-columns:1fr}}
+
+  .cta-band{background:linear-gradient(160deg,var(--primary),var(--deep));color:#fff;
+    border-radius:calc(var(--radius) + 6px);padding:clamp(2.2rem,5vw,3.6rem);
+    position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .cta-band::before{content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(22,184,166,.18) 1.4px,transparent 1.6px);
+    background-size:24px 24px;opacity:.4}
+  .cta-band>*{position:relative;z-index:1}
+  .cta-band .lead{color:rgba(255,255,255,.86)}
+</style>
+</head>
+<body>
+
+<!--ff:nav--><header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="World Genome Academy home">
+      <span class="dna" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <path d="M6 3c0 6 12 6 12 12M18 3c0 6-12 6-12 12M7 6h10M7 18h10M8.5 9h7M8.5 15h7"/>
+        </svg>
+      </span>
+      <span>World Genome Academy<small>Reading the living library of Earth</small></span>
+    </a>
+    <nav aria-label="Primary">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+        <svg class="bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="mission.html">Mission</a></li>
+        <li><a href="curriculum.html" aria-current="page">Curriculum</a></li>
+        <li><a href="atlas.html">Atlas</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="stories.html">Stories</a><a href="get-involved.html">Get involved</a></li>
+      </ul>
+    </nav>
+  </div>
+</header><!--/ff:nav-->
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-media">
+      <img src="images/imgccc48e5eae.webp" width="1536" height="1024" alt="Students examining samples by a riverbank" fetchpriority="high">
+    </div>
+    <div class="hero-inner wrap">
+      <p class="eyebrow">The Curriculum</p>
+      <h1>From students to citizen scientists</h1>
+      <p>Seven modular units guide young people from a riverbank sample to real sequenced data, then out into the world to share what they discover. Same scientific method everywhere, adapted to the ecosystem outside every classroom door.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#units">Explore the seven units
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#bring">Bring it to your school</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">A shared framework</p>
+        <h2>Real science, designed to travel</h2>
+        <hr class="ruleline">
+        <p class="lead">Our hands-on curriculum transforms students into citizen scientists. Across seven modular learning units, they collect environmental samples, extract and sequence DNA using portable Oxford Nanopore technology, analyze biodiversity, and communicate their findings through scientific and creative projects. Every program follows the same rigorous framework while investigating the living world right where students stand.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEVEN UNITS -->
+  <section class="section" id="units" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Seven modular units</p>
+        <h2>The path through the program</h2>
+        <p class="lead">Units build on one another but flex to your calendar. Run them as a full year, a focused term, or a field intensive.</p>
+      </div>
+
+      <div class="grid grid-3">
+
+        <article class="card unit-card reveal">
+          <div class="card-media">
+            <span class="card-num">01</span>
+            <img src="images/img4d2dde4f20.webp" width="1024" height="1024" loading="lazy" alt="Gloved hand collecting a water sample in a vial">
+          </div>
+          <div class="card-body">
+            <span class="unit-tag">Fieldwork</span>
+            <h3>Sampling the ecosystem</h3>
+            <p>Students design a sampling plan and collect water and soil from their local environment using sterile, repeatable methods.</p>
+          </div>
+        </article>
+
+        <article class="card unit-card reveal d1">
+          <div class="card-media">
+            <span class="card-num">02</span>
+            <img src="images/img99df9c8b6a.webp" width="1024" height="1024" loading="lazy" alt="Pipette dispensing liquid during DNA extraction">
+          </div>
+          <div class="card-body">
+            <span class="unit-tag">Wet lab</span>
+            <h3>Extracting eDNA</h3>
+            <p>Hands-on extraction turns a cloudy sample into purified genetic material, the trace life leaves behind in water and soil.</p>
+          </div>
+        </article>
+
+        <article class="card unit-card reveal d2">
+          <div class="card-media">
+            <span class="card-num">03</span>
+            <img src="images/img11072c2393.webp" width="1024" height="1024" loading="lazy" alt="Portable sequencer connected to a laptop in the field">
+          </div>
+          <div class="card-body">
+            <span class="unit-tag">Sequencing</span>
+            <h3>Reading the code</h3>
+            <p>A pocket-sized Oxford Nanopore sequencer reads DNA in real time, right in the classroom or out at the sample site.</p>
+          </div>
+        </article>
+
+        <article class="card unit-card reveal">
+          <div class="card-media">
+            <span class="card-num">04</span>
+            <img src="images/imgbc4b1e4d90.webp" width="1024" height="1024" loading="lazy" alt="Teal screen glow on a focused student analyzing data">
+          </div>
+          <div class="card-body">
+            <span class="unit-tag">Bioinformatics</span>
+            <h3>Analyzing biodiversity</h3>
+            <p>Students match sequences to reference databases, identifying the species hidden in a single drop of their ecosystem.</p>
+          </div>
+        </article>
+
+        <article class="card unit-card reveal d1">
+          <div class="card-media">
+            <span class="card-num">05</span>
+            <img src="images/img6f01720c5b.webp" width="1024" height="1024" loading="lazy" alt="Glowing network of biodiversity data nodes">
+          </div>
+          <div class="card-body">
+            <span class="unit-tag">Data</span>
+            <h3>Mapping the network</h3>
+            <p>Findings are added to shared biodiversity atlases, connecting one classroom's data to a growing global picture of life.</p>
+          </div>
+        </article>
+
+        <article class="card unit-card reveal d2">
+          <div class="card-media">
+            <span class="card-num">06</span>
+            <img src="images/img6f93e05919.webp" width="1024" height="1024" loading="lazy" alt="Student writing field notes beside samples">
+          </div>
+          <div class="card-body">
+            <span class="unit-tag">Research</span>
+            <h3>Documenting discoveries</h3>
+            <p>Careful field notes and lab records teach students to build a credible, reproducible scientific record of their work.</p>
+          </div>
+        </article>
+
+        <article class="card unit-card reveal">
+          <div class="card-media">
+            <span class="card-num">07</span>
+            <img src="images/img2747ed6d2c.webp" width="1024" height="1024" loading="lazy" alt="Students presenting creative ecosystem projects">
+          </div>
+          <div class="card-body">
+            <span class="unit-tag">Communicate</span>
+            <h3>Telling the story</h3>
+            <p>Students translate data into research posters, exhibitions, and creative projects that move their community to act.</p>
+          </div>
+        </article>
+
+        <article class="card unit-card reveal d1">
+          <div class="card-media">
+            <span class="card-num">+</span>
+            <div class="ph-figure" role="img" aria-label="World Genome Academy DNA motif representing a capstone showcase">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+                <path d="M7 3c0 6 10 6 10 12M17 3c0 6-10 6-10 12M7 21c0-2 10-2 10 0M7 3c0-2 10-2 10 0"/>
+                <path d="M8.5 6h7M8.5 18h7M9 9h6M9 15h6"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="unit-tag">Capstone</span>
+            <h3>The biodiversity showcase</h3>
+            <p>A flexible capstone where cohorts present their year of work, comparing their ecosystem with partner schools worldwide.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCAL ECOSYSTEMS STRIP -->
+  <section class="section band-deep">
+    <div class="wrap">
+      <div class="sec-head reveal" style="color:#fff">
+        <p class="eyebrow">Adapted to every place</p>
+        <h2 style="color:#fff">The same method, a different ecosystem</h2>
+        <p class="lead" style="color:rgba(255,255,255,.85)">Wherever a school sits, there is biodiversity to read. Each cohort investigates the ecosystem around them, then contributes that data to a common understanding of life on Earth.</p>
+      </div>
+
+      <div class="eco-strip">
+        <div class="eco-item reveal">
+          <div class="eco-media">
+            <div class="ph-figure" role="img" aria-label="Coastal waters ecosystem, illustrated with the wave motif">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+                <path d="M2 9c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 19c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/>
+              </svg>
+            </div>
+          </div>
+          <div class="eco-cap"><h3>Coastal waters</h3><p>Tide pools, harbors, and kelp beds full of marine eDNA.</p></div>
+        </div>
+
+        <div class="eco-item reveal d1">
+          <div class="eco-media">
+            <div class="ph-figure" role="img" aria-label="Mountain rivers ecosystem, illustrated with the flowing current motif">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+                <path d="M5 3v6M12 3v9M19 3v6"/>
+                <path d="M3 14c3 2 5 2 8 0s5-2 8 0M3 19c3 2 5 2 8 0s5-2 8 0"/>
+              </svg>
+            </div>
+          </div>
+          <div class="eco-cap"><h3>Mountain rivers</h3><p>Cold, fast freshwater carrying signals from upstream.</p></div>
+        </div>
+
+        <div class="eco-item reveal d2">
+          <div class="eco-media">
+            <div class="ph-figure" role="img" aria-label="Agricultural soils ecosystem, illustrated with the root motif">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+                <path d="M12 3v8M12 11c0 4-4 4-4 9M12 11c0 4 4 4 4 9M9 6l3 3 3-3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="eco-cap"><h3>Agricultural soils</h3><p>Working farmland teeming with microbial life underfoot.</p></div>
+        </div>
+
+        <div class="eco-item reveal d3">
+          <div class="eco-media">
+            <img src="images/imgee14bc79c6.webp" width="1024" height="1024" loading="lazy" alt="Dewy urban park grass with blurred skyline">
+          </div>
+          <div class="eco-cap"><h3>Urban parks</h3><p>City green space proving biodiversity is everywhere.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAMEWORK + LOCAL ADAPTATION SPLIT -->
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <p class="eyebrow">Local and global at once</p>
+          <h2>One framework, many ecosystems</h2>
+          <hr class="ruleline">
+          <p>Every program is adapted to its local environment while following a shared scientific framework. Students in a coastal city and students beside a mountain river learn the same methods, run the same sequencing technology, and record data the same way, so their results can be compared, combined, and trusted.</p>
+          <p>That consistency is what turns thousands of individual classroom investigations into something larger: a coordinated, worldwide reading of biodiversity that no single lab could produce alone.</p>
+        </div>
+        <div class="frame-fig reveal d1">
+          <div class="frame-rings">
+            <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="100" cy="100" r="78" stroke="rgba(255,255,255,.25)"/>
+              <circle cx="100" cy="100" r="52" stroke="rgba(22,184,166,.85)"/>
+              <circle cx="100" cy="100" r="26" stroke="rgba(255,255,255,.6)"/>
+              <circle cx="100" cy="100" r="6" fill="rgba(22,184,166,.95)" stroke="none"/>
+              <g stroke="rgba(255,255,255,.7)">
+                <circle cx="100" cy="22" r="4" fill="#fff" stroke="none"/>
+                <circle cx="167" cy="135" r="4" fill="#fff" stroke="none"/>
+                <circle cx="33" cy="135" r="4" fill="#fff" stroke="none"/>
+                <circle cx="152" cy="64" r="4" fill="rgba(22,184,166,.95)" stroke="none"/>
+                <circle cx="48" cy="64" r="4" fill="rgba(22,184,166,.95)" stroke="none"/>
+              </g>
+            </svg>
+          </div>
+          <p class="frame-cap">Shared method at the center · local ecosystems on every node</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTPUTS -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Real outputs</p>
+        <h2>Students don't just learn science. They make it.</h2>
+        <p class="lead">Every cohort generates genuine, contributable data and finds its own voice to share what that data means.</p>
+      </div>
+
+      <div class="out-grid">
+        <div class="out-card reveal">
+          <span class="ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
+          </span>
+          <h3>Research</h3>
+          <p>Sequenced reads, species identifications, and field records become real datasets added to shared biodiversity atlases.</p>
+        </div>
+
+        <div class="out-card reveal d1">
+          <span class="ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 5h16v11H7l-3 3z"/><path d="M8 9h8M8 12h5"/></svg>
+          </span>
+          <h3>Storytelling</h3>
+          <p>Students write and present the narrative behind their numbers, making biodiversity vivid for their community.</p>
+        </div>
+
+        <div class="out-card reveal d2">
+          <span class="ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
+          </span>
+          <h3>Creative projects</h3>
+          <p>Art, film, and exhibitions translate genomic discovery into work that inspires action far beyond the classroom.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEACHER CTA -->
+  <section class="section" id="bring">
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <p class="eyebrow">For teachers and schools</p>
+        <h2 style="color:#fff;max-width:18ch">Bring genomic science to your classroom</h2>
+        <p class="lead">We help educators run the full program: curriculum, training, portable sequencing hardware, and a global network of schools reading life together. Tell us about your students and the ecosystem outside your window, and we will build a pilot that fits.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="partners.html">Start a school pilot
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="mission.html">Understand the science</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!--ff:footer--><footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <span class="dna" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3c0 6 12 6 12 12M18 3c0 6-12 6-12 12M7 6h10M7 18h10M8.5 9h7M8.5 15h7"/></svg>
+          </span>
+          <span>World Genome Academy</span>
+        </a>
+        <p>Empowering the next generation to explore, understand, and protect the living world through environmental DNA and hands-on genomic science.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="mission.html">Mission</a>
+        <a href="curriculum.html">Curriculum</a>
+        <a href="atlas.html">Atlas</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="partners.html">Partners</a>
+        <a href="stories.html">Stories</a>
+        <a href="partners.html">Become a partner</a><a href="get-involved.html">Get involved</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 World Genome Academy. Reading the living library of Earth.</span>
+      <span>Powered by portable sequencing &amp; place-based science.</span>
+    </div>
+  </div>
+</footer><!--/ff:footer-->
+
+<script src="script.js"></script>
+</body>
+</html>
