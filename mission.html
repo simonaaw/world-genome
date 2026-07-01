@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mission · World Genome Academy</title>
+<meta name="description" content="Every organism carries a genome. Together they form the World Genome, the living record of life on Earth. Discover how students read it through environmental DNA.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Schibsted+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Mission page extras */
+  .what-edna .split-media{aspect-ratio:4/5}
+  .edna-defs{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;gap:1rem}
+  .edna-defs li{
+    display:flex;gap:.9rem;align-items:flex-start;
+    padding:1rem 1.1rem;border-radius:12px;
+    background:var(--surface);border:1px solid rgba(14,79,99,.10);
+    box-shadow:0 14px 40px -28px rgba(7,42,56,.5);
+  }
+  .edna-defs .dot{
+    flex:none;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;
+    background:linear-gradient(150deg,var(--primary),var(--accent));color:#fff;
+  }
+  .edna-defs .dot svg{width:17px;height:17px}
+  .edna-defs strong{display:block;font-family:var(--font-display)}
+  .edna-defs span.txt{color:var(--muted);font-size:.95rem}
+
+  /* process band */
+  .process{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem}
+  .step{
+    background:var(--surface);border-radius:var(--radius);overflow:hidden;
+    border:1px solid rgba(14,79,99,.10);box-shadow:var(--shadow);
+    display:flex;flex-direction:column;
+  }
+  .step-media{position:relative;aspect-ratio:4/3;overflow:hidden}
+  .step-media img,.step-media .ph-figure{width:100%;height:100%;object-fit:cover}
+  .step-num{
+    position:absolute;top:.5rem;left:.7rem;z-index:2;
+    font-family:var(--font-display);font-weight:700;color:#fff;
+    font-size:1.05rem;width:30px;height:30px;display:grid;place-items:center;
+    border-radius:8px;background:rgba(7,42,56,.55);backdrop-filter:blur(4px);
+  }
+  .step-body{padding:1rem 1.05rem 1.2rem}
+  .step-body h3{font-size:1.08rem;margin-bottom:.3rem}
+  .step-body p{color:var(--muted);font-size:.9rem;margin:0}
+  .step-arrow{display:none}
+  @media (max-width:1000px){.process{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.process{grid-template-columns:1fr}}
+
+  .field-split .split-media{aspect-ratio:3/2}
+
+  .quote-band{text-align:center}
+  .quote-band .pullquote{margin-inline:auto;max-width:30ch}
+  .quote-cite{margin-top:1.4rem;font-family:var(--font-display);letter-spacing:.04em;color:rgba(255,255,255,.78);font-size:.95rem}
+</style>
+</head>
+<body>
+
+<!--ff:nav--><header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="World Genome Academy home">
+      <span class="dna" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <path d="M6 3c0 6 12 6 12 12M18 3c0 6-12 6-12 12M7 6h10M7 18h10M8.5 9h7M8.5 15h7"/>
+        </svg>
+      </span>
+      <span>World Genome Academy<small>Reading the living library of Earth</small></span>
+    </a>
+    <nav aria-label="Primary">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+        <svg class="bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="mission.html" aria-current="page">Mission</a></li>
+        <li><a href="curriculum.html">Curriculum</a></li>
+        <li><a href="atlas.html">Atlas</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="stories.html">Stories</a><a href="get-involved.html">Get involved</a></li>
+      </ul>
+    </nav>
+  </div>
+</header><!--/ff:nav-->
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Mission introduction">
+    <div class="hero-media">
+      <img src="images/img0e9e3e5c2d.webp" width="1536" height="1024" alt="Still dark lake surface at dawn with a single ripple" loading="eager">
+    </div>
+    <div class="hero-inner wrap">
+      <p class="eyebrow">Our Mission</p>
+      <h1>Reading the living library of life</h1>
+      <p>Every living organism carries a genome. Together these genomes form the World Genome, the collective genetic record of life on Earth. We exist to help the next generation read it before it disappears.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="curriculum.html">Explore the curriculum
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="atlas.html">See the Atlas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO / WORLD GENOME -->
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <p class="eyebrow">The World Genome</p>
+          <h2>An invaluable library we have barely begun to read</h2>
+          <hr class="ruleline">
+          <p>As biodiversity declines, we risk losing irreplaceable genetic information before it is ever discovered. Whole branches of the living library are vanishing unread, taking their chemistry, their adaptations, and their stories with them.</p>
+          <p>World Genome Academy empowers students with the tools, knowledge, and curiosity to read this library through environmental DNA. We make genomic literacy accessible while contributing to real scientific research and active conservation, turning curious learners into credible scientists.</p>
+          <a class="btn btn-outline" href="partners.html">Partner with us</a>
+        </div>
+        <div class="split-media reveal d2">
+          <img src="images/imgcecb29d6f2.webp" width="1024" height="1024" alt="Microscopic life in a single drop of pond water" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IS eDNA -->
+  <section class="section what-edna" style="background:var(--surface)">
+    <div class="wrap">
+      <div class="split flip">
+        <div class="split-media reveal">
+          <img src="images/img98457de0eb.webp" width="1024" height="1024" alt="Macro view of soil and water meeting with suspended particles" loading="lazy">
+        </div>
+        <div class="reveal d2">
+          <p class="eyebrow">What is environmental DNA</p>
+          <h2>The traces life leaves behind</h2>
+          <hr class="ruleline">
+          <p>Environmental DNA, or eDNA, is the genetic material that organisms naturally shed into the world around them. Skin cells, scales, mucus, pollen, and waste all carry DNA, and that DNA lingers in water and soil long after the animal or plant has moved on.</p>
+          <p>By sampling a cup of seawater or a pinch of riverbank mud, we can detect the species that passed through, no nets, no traps, no disturbance to wildlife. eDNA lets us study biodiversity gently and at scale, reading the presence of life from the molecules it leaves behind.</p>
+          <ul class="edna-defs">
+            <li>
+              <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3c3 4 6 6 6 10a6 6 0 0 1-12 0c0-4 3-6 6-10Z"/></svg></span>
+              <span><strong>Non-invasive</strong><span class="txt">We read who lives here without ever touching a single creature.</span></span>
+            </li>
+            <li>
+              <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></span>
+              <span><strong>Sensitive</strong><span class="txt">A single sample can reveal dozens of species, including the rare and hidden.</span></span>
+            </li>
+            <li>
+              <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg></span>
+              <span><strong>Scalable</strong><span class="txt">Classrooms on every continent can use the same method on local ecosystems.</span></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">What students actually do</p>
+        <h2>From a cup of water to a global record</h2>
+        <p class="lead">Five clear steps turn a field trip into real science. Every sample reveals hidden ecosystem life and helps preserve its genetic record for future generations.</p>
+      </div>
+
+      <div class="process">
+        <div class="step reveal">
+          <div class="step-media">
+            <span class="step-num">1</span>
+            <img src="images/img58be6bf731.webp" width="1536" height="1024" alt="Hands holding a portable DNA sequencing device in the field" loading="lazy">
+          </div>
+          <div class="step-body">
+            <h3>Collect</h3>
+            <p>Gather water and soil samples from oceans, freshwater, and terrestrial sites near the school.</p>
+          </div>
+        </div>
+
+        <div class="step reveal d1">
+          <div class="step-media">
+            <span class="step-num">2</span>
+            <div class="ph-figure" role="img" aria-label="Extraction step illustration">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 3h6M10 3v6l-4 8a3 3 0 0 0 3 4h6a3 3 0 0 0 3-4l-4-8V3"/><path d="M7.5 15h9"/></svg>
+            </div>
+          </div>
+          <div class="step-body">
+            <h3>Extract</h3>
+            <p>Isolate and purify the DNA from each sample using accessible field protocols.</p>
+          </div>
+        </div>
+
+        <div class="step reveal d2">
+          <div class="step-media">
+            <span class="step-num">3</span>
+            <div class="ph-figure" role="img" aria-label="Sequencing step illustration">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 3c0 5 10 7 10 12M17 3c0 5-10 7-10 12M7 21c0-2 10-4 10-6M17 21c0-2-10-4-10-6"/></svg>
+            </div>
+          </div>
+          <div class="step-body">
+            <h3>Sequence</h3>
+            <p>Read the DNA on portable Oxford Nanopore devices, right in the field or classroom.</p>
+          </div>
+        </div>
+
+        <div class="step reveal d3">
+          <div class="step-media">
+            <span class="step-num">4</span>
+            <div class="ph-figure" role="img" aria-label="Analysis step illustration">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-9"/></svg>
+            </div>
+          </div>
+          <div class="step-body">
+            <h3>Analyze</h3>
+            <p>Match sequences to species and measure the biodiversity hidden in each location.</p>
+          </div>
+        </div>
+
+        <div class="step reveal d4">
+          <div class="step-media">
+            <span class="step-num">5</span>
+            <div class="ph-figure" role="img" aria-label="Contribute step illustration">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg>
+            </div>
+          </div>
+          <div class="step-body">
+            <h3>Contribute</h3>
+            <p>Add findings to shared biodiversity atlases that researchers worldwide can use.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTABLE SEQUENCING -->
+  <section class="section field-split" style="background:var(--surface)">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <p class="eyebrow">Lab-grade science, field-ready</p>
+          <h2>A genomics lab that fits in a backpack</h2>
+          <hr class="ruleline">
+          <p>Portable Oxford Nanopore sequencers are no larger than a smartphone, yet they read the same long strands of DNA used in frontier research. That changes who gets to do genomics. The lab no longer sits behind closed doors; it travels to the tide pool, the riverbank, and the schoolyard.</p>
+          <p>Students plug a sequencer into a laptop, watch sequences appear in real time, and see their own samples become data within a single class. The technology is rigorous, but the experience is hands-on, immediate, and genuinely theirs.</p>
+          <a class="btn btn-outline" href="curriculum.html">See how it fits the curriculum</a>
+        </div>
+        <div class="split-media reveal d2">
+          <img src="images/img58be6bf731.webp" width="1536" height="1024" alt="Hands holding a portable DNA sequencing device in the field" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE BAND -->
+  <section class="section band-green quote-band">
+    <div class="wrap">
+      <p class="pullquote reveal">Every sample reveals hidden ecosystem life and helps preserve its genetic record for the generations who come next.</p>
+      <p class="quote-cite reveal d1">The World Genome Academy mission</p>
+    </div>
+  </section>
+
+</main>
+
+<!--ff:footer--><footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <span class="dna" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3c0 6 12 6 12 12M18 3c0 6-12 6-12 12M7 6h10M7 18h10M8.5 9h7M8.5 15h7"/></svg>
+          </span>
+          <span>World Genome Academy</span>
+        </a>
+        <p>Empowering the next generation to explore, understand, and protect the living world through environmental DNA and hands-on genomic science.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="mission.html">Mission</a>
+        <a href="curriculum.html">Curriculum</a>
+        <a href="atlas.html">Atlas</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="partners.html">Partners</a>
+        <a href="stories.html">Stories</a>
+        <a href="partners.html">Become a partner</a><a href="get-involved.html">Get involved</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 World Genome Academy. Reading the living library of Earth.</span>
+      <span>Powered by portable sequencing &amp; place-based science.</span>
+    </div>
+  </div>
+</footer><!--/ff:footer-->
+
+<script src="script.js"></script>
+</body>
+</html>
