@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlas | World Genome Academy</title>
+<meta name="description" content="The World Genome Atlas is our growing global network of biodiversity observations. Explore pilot locations from Los Angeles to Japan, and see how local projects build a shared picture of life on Earth.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Schibsted+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ----- Atlas map band ----- */
+  .atlas-map{
+    position:relative;
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:linear-gradient(160deg,var(--primary),var(--deep));
+    box-shadow:var(--shadow);
+    aspect-ratio:16/9;
+    min-height:380px;
+  }
+  .atlas-map::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(22,184,166,.16) 1.3px,transparent 1.5px);
+    background-size:26px 26px;opacity:.45;pointer-events:none;
+  }
+  .atlas-map svg.continents{
+    position:absolute;inset:0;width:100%;height:100%;
+    color:rgba(255,255,255,.14);
+  }
+  .pin{
+    position:absolute;
+    transform:translate(-50%,-50%);
+    z-index:3;
+  }
+  .pin button{
+    appearance:none;border:0;cursor:pointer;background:none;
+    display:grid;place-items:center;
+    width:20px;height:20px;border-radius:50%;
+    position:relative;
+  }
+  .pin .dot{
+    width:13px;height:13px;border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 0 4px rgba(22,184,166,.25);
+    position:relative;z-index:2;
+    transition:transform .25s ease;
+  }
+  .pin button:hover .dot,.pin button:focus-visible .dot{transform:scale(1.25)}
+  .pin .ring{
+    position:absolute;inset:0;margin:auto;
+    width:13px;height:13px;border-radius:50%;
+    border:2px solid var(--accent);
+    animation:pulse 2.6s ease-out infinite;
+  }
+  @keyframes pulse{
+    0%{transform:scale(1);opacity:.8}
+    100%{transform:scale(3.4);opacity:0}
+  }
+  @media (prefers-reduced-motion:reduce){.pin .ring{animation:none;opacity:.4}}
+  .pin .tag{
+    position:absolute;
+    bottom:130%;left:50%;transform:translateX(-50%) translateY(6px);
+    background:var(--surface);color:var(--text);
+    font-family:var(--font-display);font-weight:600;font-size:.78rem;
+    white-space:nowrap;padding:.35rem .65rem;border-radius:8px;
+    box-shadow:var(--shadow);
+    opacity:0;visibility:hidden;
+    transition:opacity .2s ease,transform .2s ease,visibility .2s;
+    pointer-events:none;
+  }
+  .pin button:hover .tag,.pin button:focus-visible .tag{
+    opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);
+  }
+  .map-legend{
+    display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:1.4rem;
+    font-size:.9rem;color:var(--muted);
+  }
+  .map-legend span{display:inline-flex;align-items:center;gap:.5rem}
+  .map-legend i{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(22,184,166,.22)}
+
+  .loc-note{
+    display:inline-flex;align-items:center;gap:.4rem;
+    font-family:var(--font-display);font-weight:600;font-size:.8rem;
+    color:var(--accent);text-transform:uppercase;letter-spacing:.14em;
+    margin-bottom:.5rem;
+  }
+  .future-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.4rem;position:relative;z-index:1}
+  .future-grid .fcard{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--radius);padding:1.4rem 1.4rem 1.6rem;
+  }
+  .future-grid h3{color:#fff}
+  .future-grid p{color:rgba(255,255,255,.82);margin:0;font-size:.96rem}
+  @media (max-width:780px){.future-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!--ff:nav--><header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="World Genome Academy home">
+      <span class="dna" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <path d="M6 3c0 6 12 6 12 12M18 3c0 6-12 6-12 12M7 6h10M7 18h10M8.5 9h7M8.5 15h7"/>
+        </svg>
+      </span>
+      <span>World Genome Academy<small>Reading the living library of Earth</small></span>
+    </a>
+    <nav aria-label="Primary">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+        <svg class="bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="mission.html">Mission</a></li>
+        <li><a href="curriculum.html">Curriculum</a></li>
+        <li><a href="atlas.html" aria-current="page">Atlas</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="stories.html">Stories</a><a href="get-involved.html">Get involved</a></li>
+      </ul>
+    </nav>
+  </div>
+</header><!--/ff:nav-->
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-media">
+      <img src="images/imgea402cc523.webp" width="1536" height="1024" alt="Aerial view from turquoise shallows to green forest" loading="eager">
+    </div>
+    <div class="wrap hero-inner">
+      <p class="eyebrow reveal">The World Genome Atlas</p>
+      <h1 class="reveal d1">A living map of life on Earth, drawn sample by sample</h1>
+      <p class="reveal d2">Our Atlas is a growing global network of biodiversity observations. Explore where students and partners are collecting environmental DNA, and discover how every local project adds a thread to a shared picture of the living world.</p>
+      <div class="hero-cta reveal d3">
+        <a class="btn btn-primary" href="#pilots">Explore pilot locations
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="partners.html">Join the network</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP BAND -->
+  <section class="section" id="map">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Where we work</p>
+        <h2>Six pilot sites, one shared method</h2>
+        <hr class="ruleline">
+        <p class="lead">From a coastal city in California to a misty forest in Japan, each cohort reads the eDNA of its own ecosystem using the same field protocols and portable sequencing. Hover a marker to see the site.</p>
+      </div>
+
+      <div class="atlas-map reveal d1" role="img" aria-label="Stylized world map marking six World Genome Academy pilot locations: Los Angeles, Venice, Costa Rica's Nicoya Peninsula, the Netherlands, Peru's Sacred Valley, and Japan.">
+        <svg class="continents" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="currentColor">
+          <path d="M120 120c40-30 110-40 160-20s60 60 40 90-90 30-120 10-50 10-80 0-40-50 0-80zM60 230c30-10 60 0 70 30s-10 70-50 80-70-20-70-60 20-40 50-50z"/>
+          <path d="M470 90c50-20 120-10 150 30s10 90-30 110-30 60-70 80-100 20-130-20-20-90 0-130 30-80 80-100z"/>
+          <path d="M560 250c40-10 90 10 100 50s-20 90-50 130-60 60-90 30-20-90-10-140 10-60 50-70z"/>
+          <path d="M760 140c60-20 140 0 170 40s10 100-40 120-110 0-150-30-40-110 20-130z"/>
+          <path d="M820 320c30-10 70 10 70 50s-40 60-80 50-50-50-30-80 20-10 40-20z"/>
+        </svg>
+
+        <!-- pins positioned by percentage -->
+        <div class="pin" style="left:18%;top:42%"><button type="button" aria-label="Los Angeles pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Los Angeles, USA</span></button></div>
+        <div class="pin" style="left:50%;top:36%"><button type="button" aria-label="Venice pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Venice, Italy</span></button></div>
+        <div class="pin" style="left:24%;top:60%"><button type="button" aria-label="Nicoya Peninsula pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Nicoya Peninsula, Costa Rica</span></button></div>
+        <div class="pin" style="left:48%;top:30%"><button type="button" aria-label="Netherlands pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">The Netherlands</span></button></div>
+        <div class="pin" style="left:30%;top:74%"><button type="button" aria-label="Sacred Valley of Peru pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Sacred Valley, Peru</span></button></div>
+        <div class="pin" style="left:84%;top:40%"><button type="button" aria-label="Japan pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Japan</span></button></div>
+      </div>
+
+      <div class="map-legend reveal d2">
+        <span><i></i> Active pilot cohort</span>
+        <span>Marine, freshwater &amp; terrestrial sampling</span>
+        <span>Shared protocols, portable Oxford Nanopore sequencing</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILOT CARDS -->
+  <section class="section" id="pilots" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Pilot locations</p>
+        <h2>Each place reads a different chapter</h2>
+        <p class="lead">Local ecosystems, local students, one common scientific framework. Here is where the first observations are being recorded.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card reveal">
+          <div class="card-media">
+            <span class="card-num">01</span>
+            <img src="images/img62fff5fa7b.webp" width="1024" height="1024" alt="Aerial Los Angeles coastline" loading="lazy">
+          </div>
+          <div class="card-body">
+            <p class="loc-note">Marine &amp; urban coast</p>
+            <h3>Los Angeles, USA</h3>
+            <p>Students sample tide pools, kelp beds, and harbor waters to map biodiversity along one of the world's busiest coastlines.</p>
+          </div>
+        </article>
+
+        <article class="card reveal d1">
+          <div class="card-media">
+            <span class="card-num">02</span>
+            <img src="images/imgd8d2f9c922.webp" width="1024" height="1024" alt="Calm Venice lagoon tidal waters" loading="lazy">
+          </div>
+          <div class="card-body">
+            <p class="loc-note">Brackish lagoon</p>
+            <h3>Venice, Italy</h3>
+            <p>The tidal lagoon offers a living laboratory where freshwater meets the sea, tracking species that move between two worlds.</p>
+          </div>
+        </article>
+
+        <article class="card reveal d2">
+          <div class="card-media">
+            <span class="card-num">03</span>
+            <img src="images/img3bde1bfa3e.webp" width="1024" height="1024" alt="Nicoya Peninsula jungle coastline in Costa Rica" loading="lazy">
+          </div>
+          <div class="card-body">
+            <p class="loc-note">Tropical forest &amp; coast</p>
+            <h3>Nicoya Peninsula, Costa Rica</h3>
+            <p>Where dry forest meets the Pacific, cohorts sequence eDNA from rivers and reefs in one of the planet's biodiversity hotspots.</p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-media">
+            <span class="card-num">04</span>
+            <img src="images/img9d7b56504b.webp" width="1024" height="1024" alt="Dutch wetland with reed-lined canals" loading="lazy">
+          </div>
+          <div class="card-body">
+            <p class="loc-note">Freshwater wetland</p>
+            <h3>The Netherlands</h3>
+            <p>Reed-lined canals and polders become study sites for the genetic record of a landscape shaped by water for centuries.</p>
+          </div>
+        </article>
+
+        <article class="card reveal d1">
+          <div class="card-media">
+            <span class="card-num">05</span>
+            <img src="images/img8b9a3c455f.webp" width="1024" height="1024" alt="River winding through the Sacred Valley of Peru" loading="lazy">
+          </div>
+          <div class="card-body">
+            <p class="loc-note">Andean river system</p>
+            <h3>Sacred Valley, Peru</h3>
+            <p>High-altitude rivers carry the eDNA of a unique montane ecosystem, sampled by students alongside their own communities.</p>
+          </div>
+        </article>
+
+        <article class="card reveal d2">
+          <div class="card-media">
+            <span class="card-num">06</span>
+            <img src="images/imgf1df763195.webp" width="1024" height="1024" alt="Mossy Japanese forest stream with teal pool" loading="lazy">
+          </div>
+          <div class="card-body">
+            <p class="loc-note">Temperate forest stream</p>
+            <h3>Japan</h3>
+            <p>Clear mountain streams and mossy forests reveal hidden amphibians, fish, and microbes through quiet water samples.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARED PICTURE BAND -->
+  <section class="section band-deep">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <p class="eyebrow">From local to global</p>
+          <h2>Every sample sharpens the bigger picture</h2>
+          <p>A single water sample from a Dutch canal or a Costa Rican river tells a story about one place and one moment. Pooled together and read with shared methods, thousands of those stories begin to reveal patterns that no classroom could see alone.</p>
+          <p>Because every cohort follows the same protocols, observations stay comparable across oceans, watersheds, and continents. Local data becomes a contribution to a common, open understanding of biodiversity and how it is changing.</p>
+          <div class="stats" style="margin-top:2rem">
+            <div class="stat"><div class="num">6</div><div class="lbl">Pilot sites across three continents</div></div>
+            <div class="stat"><div class="num">3</div><div class="lbl">Ecosystem types: marine, freshwater, terrestrial</div></div>
+            <div class="stat"><div class="num">1</div><div class="lbl">Shared scientific framework</div></div>
+          </div>
+        </div>
+        <div class="split-media reveal d1">
+          <img src="images/img0dcd32660a.webp" width="1536" height="1024" alt="Glowing globe of connected biodiversity data points" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORWARD-LOOKING BAND -->
+  <section class="section band-green">
+    <div class="wrap">
+      <div class="sec-head reveal" style="position:relative;z-index:1">
+        <p class="eyebrow">What comes next</p>
+        <h2>Toward an interactive Atlas</h2>
+        <p class="lead" style="color:rgba(255,255,255,.85)">As the network grows, the Atlas will become an interactive platform where anyone can explore biodiversity discoveries, track environmental change, and follow the scientific contributions of students across ecosystems and continents.</p>
+      </div>
+      <div class="future-grid">
+        <div class="fcard reveal">
+          <h3>Discoveries you can browse</h3>
+          <p>Species detections, sequencing results, and field notes mapped to the exact places they were found, layer by layer.</p>
+        </div>
+        <div class="fcard reveal d1">
+          <h3>Change you can track</h3>
+          <p>Returning to the same sites season after season turns single observations into time series that reveal how ecosystems shift.</p>
+        </div>
+        <div class="fcard reveal d2">
+          <h3>Science you can trust</h3>
+          <p>Every entry is student-generated and method-consistent, building an open record that researchers and communities can rely on.</p>
+        </div>
+      </div>
+      <div class="hero-cta reveal d3" style="position:relative;z-index:1;margin-top:2.4rem">
+        <a class="btn btn-primary" href="partners.html">Bring a site to the Atlas
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="stories.html">Read the field stories</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!--ff:footer--><footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <span class="dna" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3c0 6 12 6 12 12M18 3c0 6-12 6-12 12M7 6h10M7 18h10M8.5 9h7M8.5 15h7"/></svg>
+          </span>
+          <span>World Genome Academy</span>
+        </a>
+        <p>Empowering the next generation to explore, understand, and protect the living world through environmental DNA and hands-on genomic science.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="mission.html">Mission</a>
+        <a href="curriculum.html">Curriculum</a>
+        <a href="atlas.html">Atlas</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="partners.html">Partners</a>
+        <a href="stories.html">Stories</a>
+        <a href="partners.html">Become a partner</a><a href="get-involved.html">Get involved</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 World Genome Academy. Reading the living library of Earth.</span>
+      <span>Powered by portable sequencing &amp; place-based science.</span>
+    </div>
+  </div>
+</footer><!--/ff:footer-->
+
+<script src="script.js"></script>
+</body>
+</html>
