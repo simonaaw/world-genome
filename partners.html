@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partners - World Genome Academy</title>
+<meta name="description" content="World Genome Academy is built through collaboration with schools, universities, researchers, technology companies, conservation organizations, and local communities. Local in every cohort, global in ambition.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Schibsted+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Partners page specifics */
+  .pillars{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:1rem;margin-top:1.6rem;
+  }
+  .pillar{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--radius);
+    padding:1.1rem 1.2rem;
+  }
+  .pillar .num{font-family:var(--font-display);font-weight:700;color:var(--accent);font-size:1.6rem;line-height:1}
+  .pillar p{margin:.5rem 0 0;font-size:.92rem;color:rgba(255,255,255,.82)}
+  @media (max-width:820px){.pillars{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:480px){.pillars{grid-template-columns:1fr}}
+
+  .place-strip{
+    display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.8rem;
+    position:relative;z-index:1;
+  }
+  .place-chip{
+    display:inline-flex;align-items:center;gap:.55rem;
+    font-family:var(--font-display);font-weight:500;font-size:.95rem;
+    padding:.6rem 1.05rem;border-radius:999px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);
+    color:#fff;
+  }
+  .place-chip .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none}
+
+  .cta-band{
+    background:linear-gradient(160deg,var(--primary),var(--deep));
+    color:#fff;border-radius:calc(var(--radius) + 6px);
+    padding:clamp(2.2rem,5vw,3.6rem);
+    position:relative;overflow:hidden;
+    display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center;
+  }
+  .cta-band::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(22,184,166,.20) 1.4px,transparent 1.6px);
+    background-size:24px 24px;opacity:.4;pointer-events:none;
+  }
+  .cta-band .lead{color:rgba(255,255,255,.85)}
+  .cta-side{position:relative;z-index:1}
+  .cta-side ul{list-style:none;margin:0;padding:0}
+  .cta-side li{
+    display:flex;gap:.7rem;align-items:flex-start;
+    padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.14);
+    font-size:.95rem;color:rgba(255,255,255,.85);
+  }
+  .cta-side li:last-child{border-bottom:0}
+  .cta-side svg{width:1.2em;height:1.2em;color:var(--accent);flex:none;margin-top:.15em}
+  @media (max-width:820px){.cta-band{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!--ff:nav--><header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="World Genome Academy home">
+      <span class="dna" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <path d="M6 3c0 6 12 6 12 12M18 3c0 6-12 6-12 12M7 6h10M7 18h10M8.5 9h7M8.5 15h7"/>
+        </svg>
+      </span>
+      <span>World Genome Academy<small>Reading the living library of Earth</small></span>
+    </a>
+    <nav aria-label="Primary">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+        <svg class="bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="mission.html">Mission</a></li>
+        <li><a href="curriculum.html">Curriculum</a></li>
+        <li><a href="atlas.html">Atlas</a></li>
+        <li><a href="partners.html" aria-current="page">Partners</a></li>
+        <li><a href="stories.html">Stories</a><a href="get-involved.html">Get involved</a></li>
+      </ul>
+    </nav>
+  </div>
+</header><!--/ff:nav-->
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-media">
+      <img src="images/img0e9c76201b.webp" width="1536" height="1024" alt="Intertwined roots and mycelium with teal glow" loading="eager">
+    </div>
+    <div class="hero-inner wrap">
+      <p class="eyebrow">Partnerships</p>
+      <h1>Built through collaboration</h1>
+      <p>Genomic science reaches the classroom and the field only when many hands work together. We partner with schools, universities, researchers, technology companies, conservation groups, and the communities who know their ecosystems best.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#inquiry">Become a partner
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="atlas.html">See the network</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO SPLIT -->
+  <section class="section">
+    <div class="wrap split">
+      <div class="reveal">
+        <p class="eyebrow">A shared endeavour</p>
+        <h2>Many roots, one living network</h2>
+        <hr class="ruleline">
+        <p>No single institution can read the World Genome alone. The genetic record of life is too vast, too distributed, and too urgent. So we built World Genome Academy as a collaboration from the ground up, weaving together educators, scientists, and engineers around a common scientific framework.</p>
+        <p>Each partner brings something the others cannot: a classroom of curious students, a research lab, field-ready sequencing hardware, decades of conservation knowledge, or a deep relationship with a particular place. Together they turn a sample of water or soil into a discovery worth keeping.</p>
+      </div>
+      <div class="split-media reveal d2">
+        <img src="images/imgd6c54d22c1.webp" width="1024" height="1024" alt="Researcher's hands at a microscope" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER TYPES -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Who we work with</p>
+        <h2>Six kinds of partner, one mission</h2>
+        <p class="lead">From the institutions that train scientists to the communities that steward the land, every collaborator has a role in building a living record of Earth's biodiversity.</p>
+      </div>
+
+      <div class="grid grid-3">
+
+        <article class="card reveal">
+          <div class="card-media">
+            <span class="card-num">01</span>
+            <img src="images/img9293b7cb4a.webp" width="1024" height="1024" alt="Bright welcoming classroom with greenery" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>Schools</h3>
+            <p>Primary and secondary classrooms host cohorts of student scientists, embedding eDNA fieldwork and sequencing into their local curriculum and seasons.</p>
+          </div>
+        </article>
+
+        <article class="card reveal d1">
+          <div class="card-media">
+            <span class="card-num">02</span>
+            <img src="images/img38e9419296.webp" width="1024" height="1024" alt="University research courtyard with trees" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>Universities</h3>
+            <p>Academic departments lend rigour and mentorship, connecting school cohorts to graduate researchers, lab capacity, and peer-reviewed methods.</p>
+          </div>
+        </article>
+
+        <article class="card reveal d2">
+          <div class="card-media">
+            <span class="card-num">03</span>
+            <img src="images/imgd6c54d22c1.webp" width="1024" height="1024" alt="Researcher's hands at a microscope" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>Researchers</h3>
+            <p>Working ecologists and genomicists guide study design, validate findings, and help students contribute data that stands up to scientific scrutiny.</p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-media">
+            <span class="card-num">04</span>
+            <img src="images/imgf212c74a3e.webp" width="1024" height="1024" alt="Compact genomic sequencing hardware on a bench" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>Technology companies</h3>
+            <p>Hardware and software partners make portable Oxford Nanopore sequencing affordable and classroom-ready, with tools that turn raw reads into readable biodiversity.</p>
+          </div>
+        </article>
+
+        <article class="card reveal d1">
+          <div class="card-media">
+            <span class="card-num">05</span>
+            <img src="images/img5775706f98.webp" width="1024" height="1024" alt="Conservation ranger on a forest trail" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>Conservation organizations</h3>
+            <p>Land managers and conservation groups channel student findings into protection priorities, monitoring, and on-the-ground stewardship.</p>
+          </div>
+        </article>
+
+        <article class="card reveal d2">
+          <div class="card-media">
+            <span class="card-num">06</span>
+            <img src="images/img136e28ac3c.webp" width="1024" height="1024" alt="Local community group collecting samples by a river" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>Local communities</h3>
+            <p>The people who live with an ecosystem anchor every cohort, sharing place-based knowledge and ensuring projects serve the places they study.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PILOT FOOTPRINT BAND -->
+  <section class="section band-deep">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Where it is happening</p>
+        <h2>A growing pilot footprint</h2>
+        <p class="lead">We are beginning with cohorts across five regions and expanding outward, each pilot pairing a local ecosystem with a local network of partners.</p>
+      </div>
+
+      <div class="pillars reveal d1">
+        <div class="pillar">
+          <span class="num">5</span>
+          <p>Pilot regions live across three continents</p>
+        </div>
+        <div class="pillar">
+          <span class="num">3</span>
+          <p>Major ecosystem types: ocean, freshwater, and terrestrial</p>
+        </div>
+        <div class="pillar">
+          <span class="num">6</span>
+          <p>Partner categories collaborating on every cohort</p>
+        </div>
+        <div class="pillar">
+          <span class="num">∞</span>
+          <p>Genetic records waiting to be read and preserved</p>
+        </div>
+      </div>
+
+      <div class="place-strip reveal d2">
+        <span class="place-chip"><span class="dot"></span>Los Angeles, USA</span>
+        <span class="place-chip"><span class="dot"></span>Nicoya Peninsula, Costa Rica</span>
+        <span class="place-chip"><span class="dot"></span>Sacred Valley, Peru</span>
+        <span class="place-chip"><span class="dot"></span>Netherlands</span>
+        <span class="place-chip"><span class="dot"></span>Japan</span>
+        <span class="place-chip"><span class="dot"></span>and beyond</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCAL / GLOBAL SPLIT -->
+  <section class="section">
+    <div class="wrap split flip">
+      <div class="split-media reveal">
+        <img src="images/imge1c262131c.webp" width="1536" height="1024" alt="Expansive horizon where ocean, river, and forest meet" loading="lazy">
+      </div>
+      <div class="reveal d2">
+        <p class="eyebrow">Our model</p>
+        <h2>Local in every cohort, global in ambition</h2>
+        <hr class="ruleline">
+        <p>Every partnership starts where the students stand. A class in Los Angeles reads the genome of a tide pool; a cohort in the Sacred Valley follows a mountain river; students in the Netherlands sample reed-lined canals. The ecosystem is theirs, and so is the discovery.</p>
+        <p>But the method is shared. Because every cohort collects, sequences, and reports the same way, a tide pool in California and a wetland in the Netherlands become comparable chapters in one growing atlas. Local roots, global canopy. That is how a single classroom helps assemble a record of life on Earth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INQUIRY CTA -->
+  <section class="section" id="inquiry" style="padding-top:0">
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <div style="position:relative;z-index:1">
+          <p class="eyebrow">Start a partnership</p>
+          <h2>Bring the World Genome to your network</h2>
+          <p class="lead">Whether you lead a school, a lab, a company, or a community group, there is a place for you in the network. Tell us about your ecosystem and your goals, and we will design a cohort together.</p>
+          <div class="hero-cta" style="margin-top:1.4rem">
+            <a class="btn btn-primary" href="mailto:partners@worldgenome.academy">Email the partnerships team
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
+            </a>
+            <a class="btn btn-ghost" href="curriculum.html">Explore the curriculum</a>
+          </div>
+        </div>
+        <div class="cta-side">
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Co-designed cohorts tuned to your local ecosystem</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Portable sequencing, training, and a shared framework</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Findings that feed the World Genome Atlas</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>A community of educators and scientists worldwide</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!--ff:footer--><footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <span class="dna" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3c0 6 12 6 12 12M18 3c0 6-12 6-12 12M7 6h10M7 18h10M8.5 9h7M8.5 15h7"/></svg>
+          </span>
+          <span>World Genome Academy</span>
+        </a>
+        <p>Empowering the next generation to explore, understand, and protect the living world through environmental DNA and hands-on genomic science.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="mission.html">Mission</a>
+        <a href="curriculum.html">Curriculum</a>
+        <a href="atlas.html">Atlas</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="partners.html">Partners</a>
+        <a href="stories.html">Stories</a>
+        <a href="partners.html">Become a partner</a><a href="get-involved.html">Get involved</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 World Genome Academy. Reading the living library of Earth.</span>
+      <span>Powered by portable sequencing &amp; place-based science.</span>
+    </div>
+  </div>
+</footer><!--/ff:footer-->
+
+<script src="script.js"></script>
+</body>
+</html>
