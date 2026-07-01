@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>World Genome Academy - Reading the living library of Earth</title>
+<meta name="description" content="World Genome Academy empowers the next generation to explore, understand, and protect the living world through environmental DNA, portable sequencing, and place-based science education.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Schibsted+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Home-only flourishes */
+  .concept-strand{position:relative}
+  .concept-strand .split-media{aspect-ratio:4/5}
+  .concept-strand .glowframe::after{
+    content:"";position:absolute;inset:0;
+    box-shadow:inset 0 0 90px rgba(22,184,166,.45);
+    mix-blend-mode:screen;pointer-events:none;
+  }
+  .eco-card .card-body p{min-height:auto}
+  .pilot-note{
+    border:1px dashed rgba(14,79,99,.3);
+    border-radius:var(--radius);
+    padding:1.6rem;background:rgba(22,184,166,.06);
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .pilot-note h3{color:var(--primary)}
+  .pilot-note p{color:var(--muted);margin:0}
+  .closing .wrap{position:relative;z-index:1}
+  .closing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.4rem}
+  .closing-grid a{
+    display:block;padding:1.2rem 1.3rem;border-radius:var(--radius);
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);
+    font-family:var(--font-display);font-weight:600;color:#fff;
+    transition:background .25s ease,transform .25s ease;
+  }
+  .closing-grid a span{display:block;font-family:var(--font-body);font-weight:400;font-size:.86rem;color:rgba(255,255,255,.7);margin-top:.35rem}
+  .closing-grid a:hover{background:rgba(22,184,166,.2);transform:translateY(-3px)}
+  @media (max-width:880px){.closing-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:520px){.closing-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!--ff:nav--><header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="World Genome Academy home" aria-current="page">
+      <span class="dna" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <path d="M6 3c0 6 12 6 12 12M18 3c0 6-12 6-12 12M7 6h10M7 18h10M8.5 9h7M8.5 15h7"/>
+        </svg>
+      </span>
+      <span>World Genome Academy<small>Reading the living library of Earth</small></span>
+    </a>
+    <nav aria-label="Primary">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+        <svg class="bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="mission.html">Mission</a></li>
+        <li><a href="curriculum.html">Curriculum</a></li>
+        <li><a href="atlas.html">Atlas</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="stories.html">Stories</a><a href="get-involved.html">Get involved</a></li>
+      </ul>
+    </nav>
+  </div>
+</header><!--/ff:nav-->
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-media">
+      <img src="images/img61a2f87067.webp" width="1536" height="1024" alt="Macro water droplet on a leaf refracting teal light" loading="eager">
+    </div>
+    <div class="wrap hero-inner">
+      <p class="eyebrow reveal">Environmental DNA education</p>
+      <h1 class="reveal d1">Every organism carries a genome.</h1>
+      <p class="reveal d2">Together they form the World Genome, the collective genetic record of life on Earth. Much of it remains unread, and biodiversity is disappearing before we ever get the chance to listen. We are training the next generation to read it.</p>
+      <div class="hero-cta reveal d3">
+        <a class="btn btn-primary" href="mission.html">Explore the mission</a>
+        <a class="btn btn-ghost" href="curriculum.html">See the curriculum</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE WORLD GENOME concept -->
+  <section class="section concept-strand">
+    <div class="wrap split">
+      <div class="reveal">
+        <p class="eyebrow">The World Genome</p>
+        <h2>A living library, much of it still unread.</h2>
+        <hr class="ruleline">
+        <p>Every cell of every living thing holds a genome, a written record of how life solves the problem of being alive. Multiply that across millions of species and you have the World Genome: the single, collective genetic memory of our planet.</p>
+        <p>Most of those pages have never been opened. As habitats shrink and species vanish, we are losing entire chapters of genetic information before they are ever discovered, sequenced, or understood. World Genome Academy exists to change who gets to read this library, and how soon.</p>
+        <a class="btn btn-outline" href="mission.html">What environmental DNA reveals</a>
+      </div>
+      <div class="split-media glowframe reveal d2">
+        <img src="images/img15dfc4ee53.webp" width="1024" height="1024" alt="Glowing DNA helix submerged in dark water" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSYSTEMS band -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Where students work</p>
+        <h2>Three ecosystems, one shared method.</h2>
+        <p class="lead">From the open ocean to the soil beneath a city park, students collect and sequence the genetic traces that living things leave behind, building a record of life across the water cycle.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="card eco-card reveal">
+          <div class="card-media"><span class="card-num" aria-hidden="true">01</span>
+            <img src="images/img75b61bb882.webp" width="1024" height="1024" alt="Sunlit underwater kelp forest" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>Oceans &amp; coasts</h3>
+            <p>In tide pools, kelp forests, and open water, a single liter of seawater can carry the DNA of fish, invertebrates, and microbes that students never have to disturb.</p>
+          </div>
+        </article>
+        <article class="card eco-card reveal d1">
+          <div class="card-media"><span class="card-num" aria-hidden="true">02</span>
+            <img src="images/img92e8441f90.webp" width="1024" height="1024" alt="Clear freshwater stream over mossy stones" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>Freshwater</h3>
+            <p>Rivers, streams, and wetlands gather DNA from everything upstream. Students sample these living corridors to map amphibians, fish, and the health of the watershed.</p>
+          </div>
+        </article>
+        <article class="card eco-card reveal d2">
+          <div class="card-media"><span class="card-num" aria-hidden="true">03</span>
+            <img src="images/imge37609dd84.webp" width="1024" height="1024" alt="Forest soil with fine roots and unfurling fern" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>Terrestrial</h3>
+            <p>A handful of forest soil holds roots, fungi, and the invisible web that holds an ecosystem together. Students read it to reveal the biodiversity hidden underfoot.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION pull-quote band -->
+  <section class="section band-deep">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <p class="eyebrow">Our mission</p>
+          <blockquote class="pullquote">We turn students into real scientists and active stewards of the living world.</blockquote>
+        </div>
+        <div class="reveal d2">
+          <p>By pairing hands-on fieldwork with portable DNA sequencing and place-based education, we make genomic literacy accessible to any classroom, anywhere, while contributing data to genuine research and conservation.</p>
+          <div class="stats" style="margin-top:2rem">
+            <div class="stat"><div class="num">7</div><div class="lbl">Modular learning units</div></div>
+            <div class="stat"><div class="num">5+</div><div class="lbl">Pilot regions worldwide</div></div>
+            <div class="stat"><div class="num">∞</div><div class="lbl">Species left to discover</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILOT PROGRAMS preview -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Pilot programs</p>
+        <h2>A network that is local in every cohort, global in ambition.</h2>
+        <p class="lead">Our first pilots are putting sequencers into the hands of students across continents. Each project explores its own backyard, and every result joins a shared picture of life on Earth.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="card reveal">
+          <div class="card-media">
+            <img src="images/imgb88ee745fd.webp" width="1536" height="1024" alt="Young researcher collecting a water sample at a coastal tide pool" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>Coastal Los Angeles</h3>
+            <p>Students sample tide pools and urban shorelines, tracking the biodiversity of a coastline shaped by millions of people.</p>
+          </div>
+        </article>
+        <article class="card reveal d1">
+          <div class="card-media">
+            <div class="ph-figure" role="img" aria-label="Nicoya Peninsula illustration in academy palette">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M6 3c0 6 12 6 12 12M18 3c0 6-12 6-12 12M7 6h10M7 18h10M8.5 9h7M8.5 15h7"/></svg>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Nicoya Peninsula, Costa Rica</h3>
+            <p>Jungle rivers meeting the Pacific make this one of the most biodiverse classrooms on the planet for young researchers.</p>
+          </div>
+        </article>
+        <article class="card reveal d2">
+          <div class="card-media">
+            <div class="ph-figure" role="img" aria-label="Sacred Valley illustration in academy palette">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 18l5-7 4 5 3-4 6 6M3 18h18"/></svg>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Sacred Valley, Peru</h3>
+            <p>High-altitude rivers carry the genetic signatures of an ecosystem found nowhere else, sampled by Andean students.</p>
+          </div>
+        </article>
+      </div>
+      <div class="grid grid-2" style="margin-top:1.4rem">
+        <div class="pilot-note reveal">
+          <h3>Building a global network</h3>
+          <p>The Netherlands, Venice, and Japan join soon. Every new cohort adds another vantage point on a changing planet, and the World Genome Atlas grows with each sample.</p>
+        </div>
+        <div class="split-media reveal d1" style="aspect-ratio:auto">
+          <a href="atlas.html" style="display:block;height:100%">
+            <img src="images/img75b61bb882.webp" width="1024" height="1024" alt="Sunlit underwater kelp forest" loading="lazy" style="height:100%">
+          </a>
+        </div>
+      </div>
+      <p style="margin-top:1.6rem"><a class="btn btn-outline" href="atlas.html">Open the World Genome Atlas</a></p>
+    </div>
+  </section>
+
+  <!-- CLOSING partnership CTA -->
+  <section class="section band-green closing">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">Join the work</p>
+        <h2>Wherever you start, there is a place for you here.</h2>
+        <p class="lead">Educators, students, researchers, and institutional partners are all part of reading the living library of Earth. Find your path in.</p>
+      </div>
+      <div class="closing-grid reveal d1">
+        <a href="curriculum.html">For educators<span>Bring the seven-unit program to your school.</span></a>
+        <a href="mission.html">For students<span>Become a real scientist in your own ecosystem.</span></a>
+        <a href="stories.html">For researchers<span>See discoveries and contribute to the network.</span></a>
+        <a href="partners.html">For partners<span>Build genomic science into classrooms and the field.</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!--ff:footer--><footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <span class="dna" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3c0 6 12 6 12 12M18 3c0 6-12 6-12 12M7 6h10M7 18h10M8.5 9h7M8.5 15h7"/></svg>
+          </span>
+          <span>World Genome Academy</span>
+        </a>
+        <p>Empowering the next generation to explore, understand, and protect the living world through environmental DNA and hands-on genomic science.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="mission.html">Mission</a>
+        <a href="curriculum.html">Curriculum</a>
+        <a href="atlas.html">Atlas</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="partners.html">Partners</a>
+        <a href="stories.html">Stories</a>
+        <a href="partners.html">Become a partner</a><a href="get-involved.html">Get involved</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 World Genome Academy. Reading the living library of Earth.</span>
+      <span>Powered by portable sequencing &amp; place-based science.</span>
+    </div>
+  </div>
+</footer><!--/ff:footer-->
+
+<script src="script.js"></script>
+</body>
+</html>
