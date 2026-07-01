@@ -12,23 +12,51 @@
 <link rel="stylesheet" href="styles.css">
 <style>
   .contact-hero{
-    position:relative;overflow:hidden;color:#fff;
-    background:linear-gradient(160deg,var(--primary),var(--deep));
-    padding-block:clamp(4.5rem,10vw,8rem);
-  }
-  .contact-hero::before{
-    content:"";position:absolute;inset:0;
-    background-image:radial-gradient(rgba(22,184,166,.20) 1.4px,transparent 1.6px);
-    background-size:24px 24px;opacity:.4;
-  }
-  .contact-hero::after{
-    content:"";position:absolute;right:-8%;top:-30%;width:560px;height:560px;
-    background:radial-gradient(circle,rgba(22,184,166,.35),transparent 62%);
-    filter:blur(10px);pointer-events:none;
-  }
-  .contact-hero .wrap{position:relative;z-index:1}
-  .contact-hero p{color:rgba(255,255,255,.86);max-width:52ch}
+    position:relative;
+    overflow:hidden;
+    color:#fff;
+    min-height:68vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
 
+.contact-hero video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:.35;
+    z-index:-2;
+}
+
+.contact-hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        180deg,
+        rgba(7,42,56,.45),
+        rgba(7,42,56,.65)
+    );
+    z-index:-1;
+}
+
+.contact-hero .wrap{
+    position:relative;
+    z-index:2;
+}
+
+.contact-hero h1{
+    max-width:11ch;
+}
+
+.contact-hero p{
+    color:rgba(255,255,255,.88);
+    max-width:52ch;
+}
+  
   .contact-layout{
     display:grid;
     grid-template-columns:1.15fr .85fr;
@@ -134,13 +162,29 @@
 
 <main id="main">
 
-  <section class="contact-hero">
+<section class="contact-hero">
+
+    <video autoplay muted loop playsinline preload="auto">
+        <source src="images/Video2.mp4" type="video/mp4">
+    </video>
+
     <div class="wrap">
-      <p class="eyebrow reveal">Contact</p>
-      <h1 class="reveal d1">We would love to hear from you</h1>
-      <p class="reveal d2">Whether you teach a classroom of curious students, run a research lab, steward a coastline, or build the tools that read DNA, there is a place for you in the World Genome network. Tell us where you are and what you want to explore, and we will help you get started.</p>
+        <p class="eyebrow reveal">Contact</p>
+
+        <h1 class="reveal d1">
+            Let's build the future of environmental genomics together
+        </h1>
+
+        <p class="reveal d2">
+            Whether you're an educator, researcher, conservation organization,
+            technology partner, or simply passionate about protecting biodiversity,
+            we'd love to hear from you. Together we can empower the next generation
+            to explore, understand, and safeguard the living world through
+            environmental DNA.
+        </p>
     </div>
-  </section>
+
+</section>
 
   <section class="section">
     <div class="wrap">
