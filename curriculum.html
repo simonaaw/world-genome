@@ -22,6 +22,28 @@
     font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
     color:var(--accent);font-weight:600;margin-bottom:.4rem;
   }
+
+  /* Seven-unit cards: separated, floating, stepped left-to-right */
+  #units .grid-3{
+    align-items:start;        /* let each card sit at its own height */
+    gap:2rem;                 /* more air so cards don't look stacked  */
+  }
+  #units .unit-card{
+    transition:transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s ease;
+  }
+  /* staircase: 2nd and 3rd card in each row drop a little lower */
+  #units .unit-card:nth-child(3n+2){ margin-top:2.2rem; }
+  #units .unit-card:nth-child(3n+3){ margin-top:4.4rem; }
+  /* the "hovering" feel: lift + deeper shadow on hover */
+  #units .unit-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 28px 55px -18px rgba(7,42,56,.45);
+  }
+  /* drop the staircase once cards stack on small screens */
+  @media (max-width:820px){
+    #units .unit-card:nth-child(3n+2),
+    #units .unit-card:nth-child(3n+3){ margin-top:0; }
+  }
   .eco-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
   .eco-item{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(14,79,99,.10)}
   .eco-media{aspect-ratio:4/5;position:relative;overflow:hidden}
