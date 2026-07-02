@@ -18,8 +18,8 @@
     overflow:hidden;
     background:linear-gradient(160deg,var(--primary),var(--deep));
     box-shadow:var(--shadow);
-    aspect-ratio:2/1;
-    min-height:340px;
+    aspect-ratio:16/9;
+    min-height:380px;
   }
   .atlas-map::before{
     content:"";position:absolute;inset:0;
@@ -29,10 +29,6 @@
   .atlas-map svg.continents{
     position:absolute;inset:0;width:100%;height:100%;
     color:rgba(255,255,255,.14);
-  }
-  .atlas-map svg.continents .land{
-    fill:rgba(180,214,220,.16);
-    stroke:rgba(180,214,220,.28);stroke-width:.4;stroke-linejoin:round;
   }
   .pin{
     position:absolute;
@@ -156,18 +152,27 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <p class="eyebrow">Where we work</p>
-        <h2>Three pilot sites, one shared method</h2>
+        <h2>Six pilot sites, one shared method</h2>
         <hr class="ruleline">
-        <p class="lead">From the Urubamba River winding through Peru’s Sacred Valley to the Pacific coast of California, each cohort reads the eDNA of its own ecosystem using the same field protocols and portable sequencing. Hover a marker to see the site.</p>
+        <p class="lead">From a coastal city in California to a misty forest in Japan, each cohort reads the eDNA of its own ecosystem using the same field protocols and portable sequencing. Hover a marker to see the site.</p>
       </div>
 
-      <div class="atlas-map reveal d1" role="img" aria-label="World map marking three World Genome Academy pilot locations: Venice Beach in California; Santa Teresa on Costa Rica's Nicoya Peninsula; and the Sacred Valley in Cusco, Peru.">
-        <svg class="continents" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true" fill="currentColor"></svg>
+      <div class="atlas-map reveal d1" role="img" aria-label="Stylized world map marking six World Genome Academy pilot locations: Los Angeles, Venice, Costa Rica's Nicoya Peninsula, the Netherlands, Peru's Sacred Valley, and Japan.">
+        <svg class="continents" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="currentColor">
+          <path d="M120 120c40-30 110-40 160-20s60 60 40 90-90 30-120 10-50 10-80 0-40-50 0-80zM60 230c30-10 60 0 70 30s-10 70-50 80-70-20-70-60 20-40 50-50z"/>
+          <path d="M470 90c50-20 120-10 150 30s10 90-30 110-30 60-70 80-100 20-130-20-20-90 0-130 30-80 80-100z"/>
+          <path d="M560 250c40-10 90 10 100 50s-20 90-50 130-60 60-90 30-20-90-10-140 10-60 50-70z"/>
+          <path d="M760 140c60-20 140 0 170 40s10 100-40 120-110 0-150-30-40-110 20-130z"/>
+          <path d="M820 320c30-10 70 10 70 50s-40 60-80 50-50-50-30-80 20-10 40-20z"/>
+        </svg>
 
-        <!-- pins positioned from real coordinates by JS -->
-        <div class="pin" data-lat="33.985" data-lon="-118.472"><button type="button" aria-label="Venice Beach pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Venice Beach, California</span></button></div>
-        <div class="pin" data-lat="9.643" data-lon="-85.169"><button type="button" aria-label="Santa Teresa pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Santa Teresa, Costa Rica</span></button></div>
-        <div class="pin" data-lat="-13.316" data-lon="-72.081"><button type="button" aria-label="Sacred Valley pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Sacred Valley, Cusco</span></button></div>
+        <!-- pins positioned by percentage -->
+        <div class="pin" style="left:18%;top:42%"><button type="button" aria-label="Los Angeles pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Los Angeles, USA</span></button></div>
+        <div class="pin" style="left:50%;top:36%"><button type="button" aria-label="Venice pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Venice, Italy</span></button></div>
+        <div class="pin" style="left:24%;top:60%"><button type="button" aria-label="Nicoya Peninsula pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Nicoya Peninsula, Costa Rica</span></button></div>
+        <div class="pin" style="left:48%;top:30%"><button type="button" aria-label="Netherlands pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">The Netherlands</span></button></div>
+        <div class="pin" style="left:30%;top:74%"><button type="button" aria-label="Sacred Valley of Peru pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Sacred Valley, Peru</span></button></div>
+        <div class="pin" style="left:84%;top:40%"><button type="button" aria-label="Japan pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Japan</span></button></div>
       </div>
 
       <div class="map-legend reveal d2">
@@ -350,44 +355,6 @@
   </div>
 </footer><!--/ff:footer-->
 
-<!-- Atlas map: accurate coastlines (Natural Earth) + real-coordinate pins -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
-<script>
-(function () {
-  const card = document.querySelector('.atlas-map');
-  if (!card || typeof d3 === 'undefined') return;
-  const svg = d3.select(card).select('svg.continents');
-
-  // Map is drawn in a fixed 1000x500 space and stretched to fill the card.
-  // Pins are projected into the SAME space, so they always land on the coast.
-  const W = 1000, H = 500;
-  const projection = d3.geoNaturalEarth1();
-  const path = d3.geoPath(projection);
-  const DATA_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
-
-  function placePins() {
-    card.querySelectorAll('.pin').forEach(pin => {
-      if (pin.dataset.lat === undefined) return;
-      const p = projection([+pin.dataset.lon, +pin.dataset.lat]);
-      if (!p) return;
-      pin.style.left = (p[0] / W * 100) + '%';
-      pin.style.top  = (p[1] / H * 100) + '%';
-    });
-  }
-
-  d3.json(DATA_URL).then(world => {
-    const land = topojson.feature(world, world.objects.countries);
-    projection.fitExtent([[10, 18], [W - 10, H - 18]], land);
-    svg.append('path').datum(land).attr('class', 'land').attr('d', path);
-    placePins();
-  }).catch(() => {
-    // If the CDN is unreachable, leave the gradient card without an empty map.
-  });
-
-  window.addEventListener('resize', placePins);
-})();
-</script>
 <script src="script.js"></script>
 </body>
 </html>
