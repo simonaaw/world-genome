@@ -40,6 +40,29 @@
   .closing-grid a:hover{background:rgba(22,184,166,.2);transform:translateY(-3px)}
   @media (max-width:880px){.closing-grid{grid-template-columns:1fr 1fr}}
   @media (max-width:520px){.closing-grid{grid-template-columns:1fr}}
+
+  /* Ecosystem cards: always one row; scroll sideways on small screens */
+  .eco-row{
+    display:flex;
+    gap:1.6rem;
+  }
+  .eco-row .eco-card{
+    flex:1 1 0;      /* three equal columns */
+    min-width:0;     /* lets them shrink without overflowing */
+  }
+  @media (max-width:760px){
+    .eco-row{
+      overflow-x:auto;                 /* horizontal swipe/scroll */
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      padding-bottom:1rem;
+      scroll-padding-inline:1rem;
+    }
+    .eco-row .eco-card{
+      flex:0 0 80%;                    /* each card ~80% wide, next peeks in */
+      scroll-snap-align:center;
+    }
+  }
 </style>
 </head>
 <body>
@@ -122,7 +145,7 @@
         <h2>Three ecosystems, one shared method.</h2>
         <p class="lead">From the open ocean to the soil beneath a city park, students collect and sequence the genetic traces that living things leave behind, building a record of life across the water cycle.</p>
       </div>
-      <div class="grid grid-3">
+      <div class="eco-row">
         <article class="card eco-card reveal">
           <div class="card-media"><span class="card-num" aria-hidden="true">01</span>
             <img src="images/img75b61bb882.webp" width="1024" height="1024" alt="Sunlit underwater kelp forest" loading="lazy">
