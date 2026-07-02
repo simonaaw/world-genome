@@ -23,27 +23,32 @@
     color:var(--accent);font-weight:600;margin-bottom:.4rem;
   }
 
-  /* Seven-unit cards: separated, floating, stepped left-to-right */
+  /* Seven-unit cards: one horizontal row you scroll left-to-right */
   #units .grid-3{
-    align-items:start;        /* let each card sit at its own height */
-    gap:2rem;                 /* more air so cards don't look stacked  */
+    display:flex;             /* override the wrapping grid */
+    flex-wrap:nowrap;         /* keep every card on one line */
+    gap:1.5rem;
+    overflow-x:auto;          /* scroll sideways when they run past the edge */
+    overflow-y:hidden;
+    scroll-snap-type:x proximity;
+    padding:1rem .25rem 1.75rem;  /* room for the hover lift + shadow */
+    scrollbar-width:thin;
   }
   #units .unit-card{
+    flex:0 0 clamp(240px, 78vw, 300px);  /* fixed width, never shrink */
+    scroll-snap-align:start;
     transition:transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s ease;
   }
-  /* staircase: 2nd and 3rd card in each row drop a little lower */
-  #units .unit-card:nth-child(3n+2){ margin-top:2.2rem; }
-  #units .unit-card:nth-child(3n+3){ margin-top:4.4rem; }
   /* the "hovering" feel: lift + deeper shadow on hover */
   #units .unit-card:hover{
     transform:translateY(-8px);
     box-shadow:0 28px 55px -18px rgba(7,42,56,.45);
   }
-  /* drop the staircase once cards stack on small screens */
-  @media (max-width:820px){
-    #units .unit-card:nth-child(3n+2),
-    #units .unit-card:nth-child(3n+3){ margin-top:0; }
-  }
+  /* slim, on-brand scrollbar */
+  #units .grid-3::-webkit-scrollbar{height:8px}
+  #units .grid-3::-webkit-scrollbar-thumb{
+    background:rgba(14,79,99,.35);border-radius:99px}
+  #units .grid-3::-webkit-scrollbar-track{background:transparent}
   .eco-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
   .eco-item{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(14,79,99,.10)}
   .eco-media{aspect-ratio:4/5;position:relative;overflow:hidden}
