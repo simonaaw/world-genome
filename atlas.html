@@ -18,7 +18,7 @@
     overflow:hidden;
     background:linear-gradient(160deg,var(--primary),var(--deep));
     box-shadow:var(--shadow);
-    aspect-ratio:16/9;
+    aspect-ratio:2/1;
     min-height:380px;
   }
   .atlas-map::before{
@@ -157,18 +157,23 @@
         <p class="lead">From the Urubamba River winding through Peru's Sacred Valley to California's coast, each cohort reads the eDNA of its own ecosystem using the same field protocols and portable sequencing. Hover a marker to see the site.</p>
       </div>
 
-<div class="atlas-map reveal d1" role="img" aria-label="Stylized world map marking three World Genome Academy pilot locations: Venice Beach in California; Santa Teresa on Costa Rica's Nicoya Peninsula; and the Sacred Valley in Cusco, Peru">
-        <svg class="continents" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="currentColor">
-          <path d="M120 120c40-30 110-40 160-20s60 60 40 90-90 30-120 10-50 10-80 0-40-50 0-80zM60 230c30-10 60 0 70 30s-10 70-50 80-70-20-70-60 20-40 50-50z"/>
-          <path d="M470 90c50-20 120-10 150 30s10 90-30 110-30 60-70 80-100 20-130-20-20-90 0-130 30-80 80-100z"/>
-          <path d="M560 250c40-10 90 10 100 50s-20 90-50 130-60 60-90 30-20-90-10-140 10-60 50-70z"/>
-          <path d="M760 140c60-20 140 0 170 40s10 100-40 120-110 0-150-30-40-110 20-130z"/>
-          <path d="M820 320c30-10 70 10 70 50s-40 60-80 50-50-50-30-80 20-10 40-20z"/>
+<div class="atlas-map reveal d1" role="img" aria-label="World map marking three World Genome Academy pilot locations: Venice Beach in California; Santa Teresa on Costa Rica's Nicoya Peninsula; and the Sacred Valley in Cusco, Peru">
+        <svg class="continents" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true" fill="currentColor">
+          <!-- North America -->
+          <path d="M33 67 61 53 153 53 236 50 278 61 322 83 344 106 306 125 292 147 275 181 250 169 231 178 208 189 231 206 244 208 208 194 183 167 172 156 156 139 156 117 125 89 83 83 Z"/>
+          <!-- South America -->
+          <path d="M275 228 286 219 333 236 358 250 403 267 392 289 367 319 339 347 328 361 319 389 300 400 297 375 303 333 306 300 286 283 275 264 278 244 Z"/>
+          <!-- Africa -->
+          <path d="M483 150 528 147 569 161 592 164 619 217 642 217 614 256 611 292 597 317 589 331 569 344 550 344 533 300 525 253 525 239 508 233 478 236 453 208 456 192 472 172 Z"/>
+          <!-- Eurasia -->
+          <path d="M475 144 475 128 500 114 528 100 514 83 542 61 578 53 667 56 778 47 889 47 972 61 1000 67 944 83 889 97 861 131 839 164 806 192 800 208 792 222 778 228 772 208 750 189 722 228 703 194 686 183 658 181 625 214 619 217 597 169 600 150 578 136 550 133 533 125 508 131 494 147 Z"/>
+          <!-- Australia -->
+          <path d="M817 311 839 300 861 283 881 283 897 281 906 303 925 328 917 353 892 356 858 339 819 344 Z"/>
         </svg>
-        <!-- pins positioned by percentage (west coast of the Americas, north → south) -->
-        <div class="pin" style="left:17%;top:40%"><button type="button" aria-label="Venice Beach pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Venice Beach, California</span></button></div>
-        <div class="pin" style="left:25%;top:56%"><button type="button" aria-label="Santa Teresa pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Santa Teresa, Costa Rica</span></button></div>
-        <div class="pin" style="left:30%;top:70%"><button type="button" aria-label="Sacred Valley pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Sacred Valley, Cusco</span></button></div>
+        <!-- pins positioned by real lat/long (equirectangular) -->
+        <div class="pin" style="left:17.1%;top:31.1%"><button type="button" aria-label="Venice Beach pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Venice Beach, California</span></button></div>
+        <div class="pin" style="left:26.3%;top:44.6%"><button type="button" aria-label="Santa Teresa pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Santa Teresa, Costa Rica</span></button></div>
+        <div class="pin" style="left:30.0%;top:57.4%"><button type="button" aria-label="Sacred Valley pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Sacred Valley, Cusco</span></button></div>
       </div>
       <div class="map-legend reveal d2">
         <span><i></i> Active pilot cohort</span>
