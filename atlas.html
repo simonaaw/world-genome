@@ -100,6 +100,27 @@
   .future-grid h3{color:#fff}
   .future-grid p{color:rgba(255,255,255,.82);margin:0;font-size:.96rem}
   @media (max-width:780px){.future-grid{grid-template-columns:1fr}}
+
+  /* Pilot cards: one horizontal row that scrolls sideways as more sites are added */
+  .pilot-scroll{
+    display:flex;gap:1.6rem;
+    overflow-x:auto;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    /* vertical padding so card shadows aren't clipped by the scroll container */
+    padding:.5rem .25rem 1.25rem;margin-inline:-.25rem;
+    scroll-padding-inline:.25rem;
+    scrollbar-width:thin;scrollbar-color:rgba(14,79,99,.35) transparent;
+  }
+  .pilot-scroll .card{
+    /* three across on desktop (2 gaps of 1.6rem); a 4th+ card overflows and scrolls */
+    flex:0 0 calc((100% - 3.2rem) / 3);
+    scroll-snap-align:start;
+  }
+  .pilot-scroll::-webkit-scrollbar{height:8px}
+  .pilot-scroll::-webkit-scrollbar-thumb{background:rgba(14,79,99,.3);border-radius:99px}
+  .pilot-scroll::-webkit-scrollbar-track{background:transparent}
+  @media (max-width:900px){ .pilot-scroll .card{flex:0 0 68%} }
+  @media (max-width:560px){ .pilot-scroll .card{flex:0 0 84%} }
 </style>
 </head>
 <body>
@@ -156,18 +177,19 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <p class="eyebrow">Where we work</p>
-        <h2>Three pilot sites, one shared method</h2>
+        <h2>Four pilot sites, one shared method</h2>
         <hr class="ruleline">
         <p class="lead">From the Urubamba River winding through Peru’s Sacred Valley to the Pacific coast of California, each cohort reads the eDNA of its own ecosystem using the same field protocols and portable sequencing. Hover a marker to see the site.</p>
       </div>
 
-      <div class="atlas-map reveal d1" role="img" aria-label="World map marking three World Genome Academy pilot locations: Venice Beach in California; Santa Teresa on Costa Rica's Nicoya Peninsula; and the Sacred Valley in Cusco, Peru.">
+      <div class="atlas-map reveal d1" role="img" aria-label="World map marking four World Genome Academy pilot locations: Venice Beach in California; Santa Teresa on Costa Rica's Nicoya Peninsula; the Sacred Valley in Cusco, Peru; and Santa Clara de Ojeal in Loreto, in the Peruvian Amazon.">
         <svg class="continents" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true" fill="currentColor"></svg>
 
         <!-- pins positioned from real coordinates by JS -->
         <div class="pin" data-lat="33.985" data-lon="-118.472"><button type="button" aria-label="Venice Beach pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Venice Beach, California</span></button></div>
         <div class="pin" data-lat="9.643" data-lon="-85.169"><button type="button" aria-label="Santa Teresa pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Santa Teresa, Costa Rica</span></button></div>
         <div class="pin" data-lat="-13.316" data-lon="-72.081"><button type="button" aria-label="Sacred Valley pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Sacred Valley, Cusco</span></button></div>
+        <div class="pin" data-lat="-3.75" data-lon="-73.30"><button type="button" aria-label="Santa Clara de Ojeal pilot site"><span class="ring"></span><span class="dot"></span><span class="tag">Santa Clara de Ojeal, Loreto</span></button></div>
       </div>
 
       <div class="map-legend reveal d2">
@@ -187,10 +209,9 @@
         <p class="lead">Local ecosystems, local students, one common scientific framework. Here is where the first observations are being recorded.</p>
       </div>
 
-      <div class="grid grid-3">
+      <div class="pilot-scroll">
         <article class="card reveal">
           <div class="card-media">
-            <span class="card-num">01</span>
             <img src="images/img62fff5fa7b.webp" width="1024" height="1024" alt="Aerial Los Angeles coastline" loading="lazy">
           </div>
           <div class="card-body">
@@ -202,7 +223,6 @@
 
         <article class="card reveal d1">
           <div class="card-media">
-            <span class="card-num">02</span>
             <img src="images/img3bde1bfa3e.webp" width="1024" height="1024" alt="Nicoya Peninsula jungle coastline in Costa Rica" loading="lazy">
           </div>
           <div class="card-body">
@@ -214,13 +234,23 @@
 
         <article class="card reveal d2">
           <div class="card-media">
-            <span class="card-num">03</span>
             <img src="images/img8b9a3c455f.webp" width="1024" height="1024" alt="River winding through the Sacred Valley of Peru" loading="lazy">
           </div>
           <div class="card-body">
             <p class="loc-note">Andean river system</p>
             <h3>Sacred Valley, Peru</h3>
             <p>High-altitude rivers carry the eDNA of a unique montane ecosystem, sampled by students alongside their own communities.</p>
+          </div>
+        </article>
+
+        <article class="card reveal d2">
+          <div class="card-media">
+            <img src="images/img21.png" width="1024" height="1024" alt="Rainforest and river in the Peruvian Amazon, Loreto" loading="lazy">
+          </div>
+          <div class="card-body">
+            <p class="loc-note">Amazon river &amp; rainforest</p>
+            <h3>Santa Clara de Ojeal, Peru</h3>
+            <p>In Loreto's Peruvian Amazon, students sequence river and rainforest eDNA alongside Indigenous communities stewarding one of Earth's most biodiverse frontiers.</p>
           </div>
         </article>
       </div>
@@ -237,7 +267,7 @@
           <p>A single water or soil sample tells a story about one place and one moment. Pooled together and read with shared methods, thousands of those stories begin to reveal patterns that no classroom could see alone.</p>
           <p>Because every cohort follows the same protocols, observations stay comparable across oceans, watersheds, and continents. Local data becomes a contribution to a common, open understanding of biodiversity and how it is changing.</p>
           <div class="stats" style="margin-top:2rem">
-            <div class="stat"><div class="num">3</div><div class="lbl">Schools participating</div></div>
+            <div class="stat"><div class="num">6+</div><div class="lbl">Communities participating</div></div>
             <div class="stat"><div class="num">600+</div><div class="lbl">eDNA samples collected</div></div>
             <div class="stat"><div class="num">50+</div><div class="lbl">Species detected</div></div>
           </div>
