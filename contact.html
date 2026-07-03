@@ -113,6 +113,73 @@
   }
   .aud h3{font-size:1.14rem;margin-bottom:.4rem;position:relative;z-index:1}
   .aud p{color:var(--muted);margin:0;font-size:.96rem;position:relative;z-index:1}
+
+  /* TEDx video card */
+  .video-card{
+    display:block;text-decoration:none;color:inherit;
+    background:var(--surface);
+    border:1px solid rgba(14,79,99,.10);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .video-card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(14,79,99,.18)}
+  .video-thumb{
+    position:relative;display:block;aspect-ratio:16/9;overflow:hidden;
+    background:#0a2b36;
+  }
+  .video-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}
+  .video-card:hover .video-thumb img{transform:scale(1.04)}
+  .video-thumb::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.28) 100%);
+  }
+  .video-play{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:60px;height:60px;border-radius:50%;
+    background:rgba(230,33,23,.94);
+    display:grid;place-items:center;z-index:2;
+    box-shadow:0 6px 20px rgba(0,0,0,.35);
+    transition:transform .2s ease,background .2s ease;
+  }
+  .video-card:hover .video-play{transform:translate(-50%,-50%) scale(1.08);background:rgba(230,33,23,1)}
+  .video-play svg{width:26px;height:26px;fill:#fff;margin-left:3px}
+  .video-badge{
+    position:absolute;left:.85rem;bottom:.7rem;z-index:2;
+    font-family:var(--font-display);font-weight:700;font-size:.72rem;
+    letter-spacing:.06em;color:#fff;
+    background:rgba(230,33,23,.92);padding:.28rem .55rem;border-radius:6px;
+  }
+  .video-body{padding:1.1rem 1.3rem 1.25rem}
+  .video-body h3{font-size:1.08rem;margin-bottom:.25rem}
+  .video-body p{color:var(--muted);margin:0;font-size:.92rem}
+
+  /* Team / Who we are */
+  .team-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:1.3rem;margin-top:.4rem;
+  }
+  @media (max-width:880px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:460px){.team-grid{grid-template-columns:1fr}}
+  .member{
+    background:var(--surface);border:1px solid rgba(14,79,99,.10);
+    border-radius:var(--radius);padding:1.6rem 1.4rem;box-shadow:var(--shadow);
+    text-align:center;transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .member:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(14,79,99,.16)}
+  .member .avatar{
+    width:74px;height:74px;border-radius:50%;margin:0 auto .9rem;
+    display:grid;place-items:center;color:#fff;
+    font-family:var(--font-display);font-weight:700;font-size:1.5rem;
+    background:linear-gradient(150deg,var(--primary),var(--accent));
+  }
+  .member h3{font-size:1.08rem;margin-bottom:.2rem}
+  .member .role{
+    font-family:var(--font-display);font-weight:600;font-size:.82rem;
+    color:var(--accent);letter-spacing:.02em;margin-bottom:.55rem;
+  }
+  .member p{color:var(--muted);margin:0;font-size:.9rem}
 </style>
 </head>
 <body>
@@ -241,6 +308,20 @@
               <p>Explore the <a href="network.html">Network</a>.</p>
             </div>
           </div>
+
+          <a class="video-card reveal d3" href="https://www.youtube.com/watch?v=HsFrquURjMg" target="_blank" rel="noopener" aria-label="Watch our TEDx Talk on YouTube">
+            <span class="video-thumb">
+              <img src="tedx-talk.png" alt="World Genome Academy TEDx Talk on screen showing eDNA visualization">
+              <span class="video-badge">TEDx</span>
+              <span class="video-play" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+            </span>
+            <span class="video-body">
+              <h3>Watch our TEDx Talk</h3>
+              <p>See the story behind reading Earth's living library — click to watch on YouTube.</p>
+            </span>
+          </a>
         </aside>
 
       </div>
@@ -274,6 +355,42 @@
           <span class="marker">04</span>
           <h3>Partners &amp; funders</h3>
           <p>Technology companies, conservation organizations, and institutions helping us scale genomic literacy across continents.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow reveal">Who we are</p>
+        <h2 class="reveal d1">The people behind World Genome Academy</h2>
+        <hr class="ruleline reveal d1">
+      </div>
+      <div class="team-grid">
+        <article class="member reveal">
+          <div class="avatar" aria-hidden="true">S</div>
+          <h3>Stanley</h3>
+          <p class="role">Co-founder</p>
+          <p>A short bio goes here — Stanley's role, background, and what drives his work with the network.</p>
+        </article>
+        <article class="member reveal d1">
+          <div class="avatar" aria-hidden="true">S</div>
+          <h3>Simona</h3>
+          <p class="role">Co-founder</p>
+          <p>A short bio goes here — Simona's role, background, and what drives her work with the network.</p>
+        </article>
+        <article class="member reveal d2">
+          <div class="avatar" aria-hidden="true">?</div>
+          <h3>Name to add</h3>
+          <p class="role">Role</p>
+          <p>A short bio goes here — replace this placeholder with the third team member's details.</p>
+        </article>
+        <article class="member reveal d3">
+          <div class="avatar" aria-hidden="true">?</div>
+          <h3>Name to add</h3>
+          <p class="role">Role</p>
+          <p>A short bio goes here — replace this placeholder with the fourth team member's details.</p>
         </article>
       </div>
     </div>
