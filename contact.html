@@ -169,10 +169,14 @@
   }
   .member:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(14,79,99,.16)}
   .member .avatar{
-    width:74px;height:74px;border-radius:50%;margin:0 auto .9rem;
+    width:120px;height:120px;border-radius:50%;margin:0 auto .9rem;
     display:grid;place-items:center;color:#fff;
     font-family:var(--font-display);font-weight:700;font-size:1.5rem;
     background:linear-gradient(150deg,var(--primary),var(--accent));
+    overflow:hidden;
+  }
+  .member .avatar img{
+    width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;
   }
   .member h3{font-size:1.08rem;margin-bottom:.2rem}
   .member .role{
@@ -369,16 +373,20 @@
       </div>
       <div class="team-grid">
         <article class="member reveal">
-          <div class="avatar" aria-hidden="true">S</div>
-          <h3>Stanley</h3>
-          <p class="role">Co-founder</p>
-          <p>A short bio goes here — Stanley's role, background, and what drives his work with the network.</p>
+          <div class="avatar">
+            <img src="img23.png" alt="Portrait of Simona Weber">
+          </div>
+          <h3>Simona Weber</h3>
+          <p class="role">Co-Founder</p>
+          <p>Simona combines expertise in environmental policy, biodiversity finance, and science communication to build educational experiences that inspire the next generation of biodiversity researchers and stewards.</p>
         </article>
         <article class="member reveal d1">
-          <div class="avatar" aria-hidden="true">S</div>
-          <h3>Simona</h3>
-          <p class="role">Co-founder</p>
-          <p>A short bio goes here — Simona's role, background, and what drives her work with the network.</p>
+          <div class="avatar">
+            <img src="img22.png" alt="Portrait of Stanley Bishop">
+          </div>
+          <h3>Stanley Bishop</h3>
+          <p class="role">Co-Founder</p>
+          <p>A short bio goes here — Stanley's role, background, and what drives his work with the network.</p>
         </article>
         <article class="member reveal d2">
           <div class="avatar" aria-hidden="true">?</div>
