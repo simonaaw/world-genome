@@ -65,6 +65,35 @@
       scroll-snap-align:center;
     }
   }
+
+  /* Pilot programs: always one row, scroll sideways as more projects are added */
+  .pilot-scroll{
+    display:flex;
+    gap:1.6rem;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    /* vertical padding so card shadows aren't clipped by the scroll container */
+    padding:.5rem .25rem 1.25rem;
+    margin-inline:-.25rem;
+    scroll-padding-inline:.25rem;
+  }
+  .pilot-scroll .card{
+    /* exactly three across on desktop (2 gaps of 1.6rem); 4th+ card overflows and scrolls */
+    flex:0 0 calc((100% - 3.2rem) / 3);
+    scroll-snap-align:start;
+  }
+  /* thin, on-brand scrollbar */
+  .pilot-scroll{scrollbar-width:thin;scrollbar-color:rgba(14,79,99,.35) transparent}
+  .pilot-scroll::-webkit-scrollbar{height:8px}
+  .pilot-scroll::-webkit-scrollbar-thumb{background:rgba(14,79,99,.3);border-radius:99px}
+  .pilot-scroll::-webkit-scrollbar-track{background:transparent}
+  @media (max-width:900px){
+    .pilot-scroll .card{flex:0 0 68%;}   /* two-ish visible, next peeks in */
+  }
+  @media (max-width:560px){
+    .pilot-scroll .card{flex:0 0 84%;}   /* one at a time on phones */
+  }
 </style>
 </head>
 <body>
@@ -207,7 +236,7 @@
         <h2>A network that is local in every cohort, global in ambition.</h2>
         <p class="lead">Our first pilots are putting sequencers into the hands of students across continents. Each project explores its own backyard, and every result joins a shared picture of life on Earth.</p>
       </div>
-      <div class="grid grid-3">
+      <div class="pilot-scroll">
         <article class="card reveal">
           <div class="card-media">
             <img src="images/img2.png" width="1536" height="1024" loading="lazy">
@@ -237,6 +266,17 @@
           <div class="card-body">
             <h3>Sacred Valley, Peru</h3>
             <p>High-altitude rivers carry the genetic signatures of an ecosystem found nowhere else, sampled by Andean students.</p>
+          </div>
+        </article>
+        <article class="card reveal d2">
+          <div class="card-media">
+            <div class="ph-figure" role="img" aria-label="Peruvian Amazon illustration in academy palette">
+            <img src="images/img20.png" width="1536" height="1024" loading="lazy">
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Santa Clara de Ojeal, Peru</h3>
+            <p>Deep in Loreto's Peruvian Amazon, students read the DNA of river and rainforest alongside Indigenous communities who steward one of the most biodiverse frontiers on Earth.</p>
           </div>
         </article>
       </div>
