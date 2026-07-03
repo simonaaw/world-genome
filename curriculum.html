@@ -50,13 +50,9 @@
     background:rgba(14,79,99,.35);border-radius:99px}
   #units .grid-3::-webkit-scrollbar-track{background:transparent}
   .eco-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
-  .eco-item{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(14,79,99,.10)}
-  .eco-media{aspect-ratio:4/5;position:relative;overflow:hidden}
-  .eco-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-  .eco-item:hover .eco-media img{transform:scale(1.06)}
-  .eco-cap{position:absolute;inset:auto 0 0 0;padding:1.1rem 1.1rem 1.2rem;color:#fff;
-    background:linear-gradient(180deg,transparent,rgba(7,42,56,.85));}
-  .eco-cap .eco-icon{display:block;width:56px;height:56px;margin:0 0 .6rem;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))}
+  .eco-item{position:relative;display:flex;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(14,79,99,.10);background:linear-gradient(180deg,rgba(10,55,72,.55),rgba(7,42,56,.85))}
+  .eco-cap{display:flex;flex-direction:column;justify-content:flex-end;padding:1.4rem 1.2rem;color:#fff}
+  .eco-cap .eco-icon{display:block;width:56px;height:56px;margin:0 0 .7rem;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))}
   .eco-cap h3{font-size:1.05rem;margin:0 0 .15rem}
   .eco-cap p{font-size:.84rem;color:rgba(255,255,255,.82);margin:0}
   @media (max-width:900px){.eco-strip{grid-template-columns:repeat(2,1fr)}}
@@ -270,30 +266,18 @@
 
       <div class="eco-strip">
         <div class="eco-item reveal">
-          <div class="eco-media">
-            <img src="images/img13.png" width="1024" height="1024" loading="lazy" alt="pitcure 1">
-          </div>
           <div class="eco-cap"><img class="eco-icon" src="images/img17.png" width="56" height="56" loading="lazy" alt=""><h3>Understand Biodiversity</h3><p>Develop a strong foundation in ecology, genetics, and the role biodiversity plays in healthy ecosystems.</p></div>
         </div>
 
         <div class="eco-item reveal d1">
-          <div class="eco-media">
-            <img src="images/img14.png" width="1024" height="1024" loading="lazy" alt="pitcure 2">
-          </div>
           <div class="eco-cap"><img class="eco-icon" src="images/img16.png" width="56" height="56" loading="lazy" alt=""><h3>Master Scientific Methods</h3><p>Plan investigations, collect environmental samples, extract DNA, operate portable sequencing technology.</p></div>
         </div>
 
         <div class="eco-item reveal d2">
-          <div class="eco-media">
-            <img src="images/img15.png" width="1024" height="1024" loading="lazy" alt="pitcure 3">
-          </div>
           <div class="eco-cap"><img class="eco-icon" src="images/img19.png" width="56" height="56" loading="lazy" alt=""><h3>Analyze Real Data</h3><p>Use bioinformatics tools to identify species, interpret sequencing results, compare biodiversity across ecosystems.</p></div>
         </div>
 
         <div class="eco-item reveal d3">
-          <div class="eco-media">
-            <img src="images/img16.png" width="1024" height="1024" loading="lazy" alt="pitcure 4">
-          </div>
           <div class="eco-cap"><img class="eco-icon" src="images/img18.png" width="56" height="56" loading="lazy" alt=""><h3>Become a Steward</h3><p>Communicate research with confidence while developing knowledge and responsibility to become an active nature steward.</p></div>
         </div>
       </div>
