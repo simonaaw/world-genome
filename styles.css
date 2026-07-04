@@ -338,11 +338,12 @@ p{margin:0 0 1rem}
   background-image:radial-gradient(rgba(22,184,166,.16) 1.3px,transparent 1.5px);
   background-size:26px 26px;opacity:.35;
 }
-.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;position:relative;z-index:1}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2rem;position:relative;z-index:1}
 .footer-grid h4{color:#fff;font-size:1rem;margin-bottom:.9rem}
 .footer-grid a{color:rgba(255,255,255,.78);display:block;padding:.25rem 0;transition:color .2s}
 .footer-grid a:hover{color:var(--accent)}
-.footer-brand .brand{color:#fff}
+.footer-brand .brand{color:#fff;display:inline-flex;align-items:center;gap:.6rem}
+.footer-brand .brand .dna{flex:none}
 .footer-brand p{max-width:34ch;font-size:.95rem;margin-top:1rem}
 .footer-bottom{
   position:relative;z-index:1;
@@ -351,7 +352,8 @@ p{margin:0 0 1rem}
   display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;justify-content:space-between;
   font-size:.85rem;color:rgba(255,255,255,.6);
 }
-@media (max-width:700px){.footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}}
+@media (max-width:820px){.footer-grid{grid-template-columns:1fr 1fr 1fr}.footer-brand{grid-column:1/-1}}
+@media (max-width:560px){.footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}}
 
 /* ---------- Focus ---------- */
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
