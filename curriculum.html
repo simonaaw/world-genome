@@ -93,6 +93,24 @@
     background-size:24px 24px;opacity:.4}
   .cta-band>*{position:relative;z-index:1}
   .cta-band .lead{color:rgba(255,255,255,.86)}
+
+  /* Moved from About: What is eDNA + portable sequencing */
+  .what-edna .split-media{aspect-ratio:4/5}
+  .edna-defs{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;gap:1rem}
+  .edna-defs li{
+    display:flex;gap:.9rem;align-items:flex-start;
+    padding:1rem 1.1rem;border-radius:12px;
+    background:var(--surface);border:1px solid rgba(14,79,99,.10);
+    box-shadow:0 14px 40px -28px rgba(7,42,56,.5);
+  }
+  .edna-defs .dot{
+    flex:none;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;
+    background:linear-gradient(150deg,var(--primary),var(--accent));color:#fff;
+  }
+  .edna-defs .dot svg{width:17px;height:17px}
+  .edna-defs strong{display:block;font-family:var(--font-display)}
+  .edna-defs span.txt{color:var(--muted);font-size:.95rem}
+  .field-split .split-media{aspect-ratio:3/2}
 </style>
 </head>
 <body>
@@ -156,8 +174,40 @@
     </div>
   </section>
 
+  <!-- WHAT IS eDNA -->
+  <section class="section what-edna" style="background:var(--surface)">
+    <div class="wrap">
+      <div class="split flip">
+        <div class="split-media reveal">
+          <img src="images/img98457de0eb.webp" width="1024" height="1024" alt="Macro view of soil and water meeting with suspended particles" loading="lazy">
+        </div>
+        <div class="reveal d2">
+          <p class="eyebrow">What is environmental DNA</p>
+          <h2>The traces of life</h2>
+          <hr class="ruleline">
+          <p>Environmental DNA, or eDNA, is the genetic material that organisms shed into the environment through skin cells, mucus, hair, waste, and other biological traces, leaving behind detectable DNA in water, soil, and air.</p>
+          <p>By sampling a cup of seawater or a pinch of riverbank mud, we can detect the species that passed through, no nets, no traps, no disturbance to wildlife. eDNA lets us study biodiversity gently, at scale, through nature's molecular traces.</p>
+          <ul class="edna-defs">
+            <li>
+              <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3c3 4 6 6 6 10a6 6 0 0 1-12 0c0-4 3-6 6-10Z"/></svg></span>
+              <span><strong>Non-invasive</strong><span class="txt">Read nature's DNA without disturbing a single organism.</span></span>
+            </li>
+            <li>
+              <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></span>
+              <span><strong>Sensitive</strong><span class="txt">One sample reveals hundreds of species, even the rarest.</span></span>
+            </li>
+            <li>
+              <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg></span>
+              <span><strong>Scalable</strong><span class="txt">One method, adaptable to any classroom and ecosystem.</span></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SEVEN UNITS -->
-  <section class="section" id="units" style="padding-top:0">
+  <section class="section" id="units">
     <div class="wrap">
       <div class="sec-head reveal">
         <p class="eyebrow">Seven modular units</p>
@@ -251,6 +301,25 @@
           </div>
         </article>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTABLE SEQUENCING -->
+  <section class="section field-split" style="background:var(--surface)">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <p class="eyebrow">Lab-grade science, field-ready</p>
+          <h2>A genomics lab that fits in a backpack</h2>
+          <hr class="ruleline">
+          <p>Portable Oxford Nanopore sequencers are no larger than a smartphone, yet they read the same long strands of DNA used in frontier research. That changes who gets to do genomics. The lab no longer sits behind closed doors; it travels to the tide pool, the riverbank, and the schoolyard.</p>
+          <p>Students plug a sequencer into a laptop, watch sequences appear in real time, and see their own samples become data within a single class. The technology is rigorous, but the experience is hands-on, immediate, and genuinely theirs.</p>
+          <a class="btn btn-outline" href="#units">See how it fits the units</a>
+        </div>
+        <div class="split-media reveal d2">
+          <img src="images/img5.jpg" width="1536" height="1024" alt="Hands holding a portable DNA sequencing device in the field" loading="lazy">
+        </div>
       </div>
     </div>
   </section>
