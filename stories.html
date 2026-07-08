@@ -36,6 +36,59 @@
   .quote-cite strong{color:#fff;font-family:var(--font-display)}
   .closing-cta{text-align:center}
   .closing-cta .hero-cta{justify-content:center}
+
+  /* --- Added: story media, galleries, specs --- */
+  .story-media{
+    position:relative;border-radius:16px;overflow:hidden;
+    background:linear-gradient(135deg,#0f2f28,#16463a);
+  }
+  .story-media::before{
+    content:attr(data-label);position:absolute;inset:0;z-index:0;
+    display:flex;align-items:center;justify-content:center;
+    padding:1rem;text-align:center;
+    font-family:var(--font-display);font-weight:600;font-size:.72rem;
+    letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);
+  }
+  .story-media img{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:cover}
+  .split .split-media.story-media{aspect-ratio:4/3}
+  .featured .split-media.story-media{min-height:340px}
+
+  /* Diagrams / renders: show the whole frame instead of cropping */
+  .story-media.media-contain{background:#f4f1e9}
+  .story-media.media-contain::before{color:rgba(20,60,50,.45)}
+  .story-media.media-contain img{object-fit:contain;padding:.7rem}
+
+  .story-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-top:1.5rem}
+  .story-gallery.two{grid-template-columns:repeat(2,1fr)}
+  .story-gallery figure{margin:0}
+  .story-gallery .story-media{aspect-ratio:4/5}
+  .story-gallery.two .story-media{aspect-ratio:4/3}
+  .story-gallery figcaption{margin-top:.5rem;font-size:.8rem;line-height:1.35;opacity:.72}
+
+  .spec-list{list-style:none;padding:0;margin:1.3rem 0 0;display:grid;gap:.6rem}
+  .spec-list li{position:relative;padding-left:1.15rem;font-size:.98rem;line-height:1.45}
+  .spec-list li::before{content:"";position:absolute;left:0;top:.55rem;width:8px;height:8px;border-radius:2px;background:var(--accent)}
+
+  .byline{
+    margin-top:1.4rem;font-family:var(--font-display);font-weight:600;
+    font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
+  }
+  .callout{
+    margin-top:1.5rem;padding:1.1rem 1.3rem;border-left:3px solid var(--accent);
+    border-radius:0 12px 12px 0;background:rgba(20,140,110,.09);
+    font-size:1rem;line-height:1.55;
+  }
+
+  /* Keep text legible on the dark green bands */
+  .band-green .featured-body h2{color:#fff}
+  .band-green .featured-body p{color:rgba(255,255,255,.86)}
+  .band-green .story-gallery figcaption{color:rgba(255,255,255,.75)}
+  .band-green .callout{background:rgba(255,255,255,.08);color:rgba(255,255,255,.9)}
+
+  @media(max-width:720px){
+    .story-gallery,.story-gallery.two{grid-template-columns:1fr 1fr}
+    .story-gallery.two{grid-template-columns:1fr}
+  }
 </style>
 </head>
 <body>
@@ -61,7 +114,8 @@
         <li><a href="curriculum.html">Curriculum</a></li>
         <li><a href="atlas.html">Atlas</a></li>
         <li><a href="network.html">Network</a></li>
-        <li><a href="stories.html" aria-current="page">Stories</a><a href="contact.html">Contact</a></li>
+        <li><a href="stories.html" aria-current="page">Stories</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </div>
@@ -82,7 +136,7 @@
         <a class="btn btn-primary" href="#stories">Read the stories
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a class="btn btn-ghost" href="netowrk.html">Network</a>
+        <a class="btn btn-ghost" href="network.html">Network</a>
       </div>
     </div>
   </section>
@@ -108,8 +162,128 @@
     </div>
   </section>
 
+  <!-- What eDNA makes possible: intro -->
+  <section class="section" id="stories" style="padding-bottom:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">What you can do with a sample</p>
+        <h2>One vial of water, many kinds of discovery</h2>
+        <hr class="ruleline">
+        <p class="lead">Environmental DNA turns a scoop of seawater, soil, or air into a record of the life that passed through it. Here are four ways our students and partners put that idea to work, in the field, on the beach, in the forest, and at the frontier of new medicine.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story 1: San Diego -->
+  <section class="section" style="padding-top:2.4rem">
+    <div class="wrap">
+      <div class="split reveal">
+        <div class="split-media story-media" data-label="Add image: sandiego-wading.jpg">
+          <img src="images/sandiego-wading.jpg" alt="Student wading into a San Diego bay with sampling equipment, moored sailboats behind" width="1024" height="768" loading="lazy" onerror="this.style.opacity=0">
+        </div>
+        <div class="featured-body">
+          <span class="tag">Field program · San Diego</span>
+          <h2>Real ocean research, placed in students' hands</h2>
+          <p>Along the bays and estuaries of San Diego, students trade the textbook for a water-quality probe and a filter funnel. They wade into the shallows, log temperature and salinity, then draw the water that carries the DNA every passing animal leaves behind. Back at the bench, that eDNA is pulled onto a membrane, and a sample that looked like nothing becomes a census of the whole ecosystem.</p>
+          <p>It's the heart of a growing global citizen-scientist movement: the tools of genomics don't belong to one distant lab, they belong wherever a curious person is willing to look closely. One team profiles a tide-pool tray teeming with urchins, kelp, and sea stars; another filters harbor water beside the sailboats; a third labels vials and runs the extraction.</p>
+          <div class="story-gallery">
+            <figure>
+              <div class="story-media" data-label="Add: sandiego-probe.jpg"><img src="images/sandiego-probe.jpg" alt="Researcher holding a handheld multiparameter water-quality probe at the water's edge" loading="lazy" onerror="this.style.opacity=0"></div>
+              <figcaption>Logging water conditions before the first sample</figcaption>
+            </figure>
+            <figure>
+              <div class="story-media" data-label="Add: sandiego-tidepool.jpg"><img src="images/sandiego-tidepool.jpg" alt="Student in safety goggles cataloguing a tray of tide-pool organisms" loading="lazy" onerror="this.style.opacity=0"></div>
+              <figcaption>Cataloguing a tide-pool tray of local life</figcaption>
+            </figure>
+            <figure>
+              <div class="story-media" data-label="Add: sandiego-lab.jpg"><img src="images/sandiego-lab.jpg" alt="Student in gloves filtering a water sample at a lab bench" loading="lazy" onerror="this.style.opacity=0"></div>
+              <figcaption>Filtering eDNA onto a membrane in the lab</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story 2: Venice Beach mobile lab -->
+  <section class="section band-green">
+    <div class="wrap">
+      <div class="split reveal">
+        <div class="split-media story-media" data-label="Add image: venice-biomonitoring.jpg">
+          <img src="images/venice-biomonitoring.jpg" alt="Three researchers running a solar-powered DNA sequencing station on the sand at Venice Beach" width="1024" height="683" loading="lazy" onerror="this.style.opacity=0">
+        </div>
+        <div class="featured-body">
+          <span class="tag">Mobile lab · Venice Beach, Los Angeles</span>
+          <h2>A genomics lab that fits on a folding table</h2>
+          <p>On a bright morning at Venice Beach, three researchers set up what used to require a building: a laptop, a palm-sized sequencer, and a solar generator on the sand, a few steps from the surf. Water goes in as an ordinary sample; within hours, the DNA of everything living just offshore scrolls across the screen.</p>
+          <p>No shipping samples to a distant facility, no waiting weeks for results, the ocean is read on the spot, powered by the sun. That is what makes the science portable enough to reach any coastline, classroom, or community: the whole workflow, from collection to sequence, travels in a single bag.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story 3: The BioScope -->
+  <section class="section">
+    <div class="wrap">
+      <div class="split reveal">
+        <div class="split-media story-media media-contain" data-label="Add image: bioscope-assembly.jpg">
+          <img src="images/bioscope-assembly.jpg" alt="CAD assembly of the BioScope: a sensor housing mounted on a field tripod with labelled components" width="1000" height="1250" loading="lazy" onerror="this.style.opacity=0">
+        </div>
+        <div class="featured-body">
+          <span class="tag">Instrument · The BioScope</span>
+          <h2>A biomonitoring station you can carry into a forest</h2>
+          <p>Not every ecosystem sits beside a lab bench, so Joey and Jaimin built the BioScope: a rugged, tripod-mounted sensor pod that watches, listens, and measures on its own. Designed as a senior capstone and aimed at reforestation efforts in Costa Rica, it turns a patch of regrowing forest into a continuous stream of ecological data.</p>
+          <p>Cameras and audio capture the animals moving through, onboard AI flags what it sees and hears, and environmental sensors record the conditions they live in. Paired with eDNA sampling, a device like this can watch a whole landscape recover, one day at a time.</p>
+          <figure style="margin:1.4rem 0 0">
+            <div class="story-media media-contain" style="aspect-ratio:16/10" data-label="Add: bioscope-internals.jpg">
+              <img src="images/bioscope-internals.jpg" alt="Electrical integration diagram of the BioScope housing showing the Jetson computer, cameras, microphone, and sensors" loading="lazy" onerror="this.style.opacity=0">
+            </div>
+            <figcaption style="margin-top:.5rem;font-size:.8rem;opacity:.72">Inside the housing: a Jetson edge computer, cameras, microphone, and environmental sensors</figcaption>
+          </figure>
+          <ul class="spec-list">
+            <li>NVIDIA Jetson Orin Nano edge computer</li>
+            <li>Standard and infrared cameras with onboard AI</li>
+            <li>KY-037 microphone for bioacoustics</li>
+            <li>Temperature and humidity sensing</li>
+            <li>Solar panel and dual antennas for off-grid operation</li>
+            <li>Weatherproof housing on a field tripod</li>
+          </ul>
+          <p class="byline">Built by Joey and Jaimin Ellinghuysen, with Simona Weber · Loyola Marymount University</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story 4: From data to medicine -->
+  <section class="section band-green">
+    <div class="wrap">
+      <div class="split reveal">
+        <div class="split-media story-media media-contain" data-label="Add image: protein-design.jpg">
+          <img src="images/protein-design.jpg" alt="Rendered surface of a candidate protein generated by an AI model" width="1024" height="768" loading="lazy" onerror="this.style.opacity=0">
+        </div>
+        <div class="featured-body">
+          <span class="tag">Frontier · From data to medicine</span>
+          <h2>A vial of seawater, a palette for new medicine</h2>
+          <p>Here is the part that surprises people. The same environmental DNA that maps a reef is becoming raw material for a new kind of drug design. Modern AI models can effectively "dream up" new proteins, and they can be tuned toward the proteins of a particular ecosystem, the exact place a sample came from. In that sense the world's genomic diversity becomes a painter's palette: the richer and more representative the data, the more the models have to work with.</p>
+          <p>The applications are already concrete. In one collaboration with Dr. Michael Levin's lab at Tufts University, the team explored an AI-designed cardiac peptide aimed at gap-junction proteins, the connexin channels that carry electrical and metabolic signals between heart cells and are implicated in arrhythmias after cardiac events.</p>
+          <div class="story-gallery two">
+            <figure>
+              <div class="story-media media-contain" data-label="Add: connexin-diagram.jpg"><img src="images/connexin-diagram.jpg" alt="Diagram of connexin subunits forming a gap-junction channel across two cell membranes" loading="lazy" onerror="this.style.opacity=0"></div>
+              <figcaption>How connexins form channels between cells</figcaption>
+            </figure>
+            <figure>
+              <div class="story-media media-contain" data-label="Add: connexin-structure.jpg"><img src="images/connexin-structure.jpg" alt="Structure of the Cx43 gap-junction channel mapped by cryo-EM" loading="lazy" onerror="this.style.opacity=0"></div>
+              <figcaption>The Cx43 gap-junction channel the work targets</figcaption>
+            </figure>
+          </div>
+          <p class="callout">If eDNA is this valuable, the communities who steward these ecosystems must be empowered to generate their own data, and own it, so the benefits flow back to the places and people the samples came from.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Story card grid -->
-  <section class="section" id="stories" style="padding-top:0">
+  <section class="section" style="padding-top:0">
     <div class="wrap">
       <div class="sec-head reveal">
         <p class="eyebrow">Dispatches</p>
