@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The BioScope · World Genome Academy</title>
+<meta name="description" content="A rugged, tripod-mounted biomonitoring station that watches, listens, and measures a recovering forest on its own, built as a senior capstone for reforestation in Costa Rica.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Schibsted+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .featured{align-items:stretch}
+  .featured .split-media{aspect-ratio:auto}
+  .featured-body{display:flex;flex-direction:column;justify-content:center}
+  .tag{
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-family:var(--font-display);font-weight:600;font-size:.74rem;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+    margin-bottom:1rem;
+  }
+  .card-meta{
+    display:flex;align-items:center;gap:.55rem;
+    font-family:var(--font-display);font-weight:600;
+    font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:.7rem;
+  }
+  .card-meta span{width:22px;height:2px;background:var(--accent);display:inline-block}
+  .quote-band{position:relative}
+  .quote-mark{
+    font-family:var(--font-display);font-size:clamp(5rem,12vw,9rem);
+    line-height:.6;color:var(--accent);opacity:.5;display:block;margin-bottom:-.2em;
+  }
+  .quote-cite{margin-top:1.6rem;color:rgba(255,255,255,.78);font-size:.95rem}
+  .quote-cite strong{color:#fff;font-family:var(--font-display)}
+  .closing-cta{text-align:center}
+  .closing-cta .hero-cta{justify-content:center}
+
+  /* --- story media, galleries, specs --- */
+  .story-media{
+    position:relative;border-radius:16px;overflow:hidden;
+    background:linear-gradient(135deg,#0f2f28,#16463a);
+  }
+  .story-media::before{
+    content:attr(data-label);position:absolute;inset:0;z-index:0;
+    display:flex;align-items:center;justify-content:center;
+    padding:1rem;text-align:center;
+    font-family:var(--font-display);font-weight:600;font-size:.72rem;
+    letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);
+  }
+  .story-media img{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:cover}
+  .split .split-media.story-media{aspect-ratio:4/3}
+  .featured .split-media.story-media{min-height:340px}
+
+  .story-media.media-contain{background:#f4f1e9}
+  .story-media.media-contain::before{color:rgba(20,60,50,.45)}
+  .story-media.media-contain img{object-fit:contain;padding:.7rem}
+
+  .story-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-top:1.5rem}
+  .story-gallery.two{grid-template-columns:repeat(2,1fr)}
+  .story-gallery figure{margin:0}
+  .story-gallery .story-media{aspect-ratio:4/5}
+  .story-gallery.two .story-media{aspect-ratio:4/3}
+  .story-gallery figcaption{margin-top:.5rem;font-size:.8rem;line-height:1.35;opacity:.72}
+
+  .spec-list{list-style:none;padding:0;margin:1.3rem 0 0;display:grid;gap:.6rem}
+  .spec-list li{position:relative;padding-left:1.15rem;font-size:.98rem;line-height:1.45}
+  .spec-list li::before{content:"";position:absolute;left:0;top:.55rem;width:8px;height:8px;border-radius:2px;background:var(--accent)}
+
+  .byline{
+    margin-top:1.4rem;font-family:var(--font-display);font-weight:600;
+    font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
+  }
+  .callout{
+    margin-top:1.5rem;padding:1.1rem 1.3rem;border-left:3px solid var(--accent);
+    border-radius:0 12px 12px 0;background:rgba(20,140,110,.09);
+    font-size:1rem;line-height:1.55;
+  }
+
+  .band-green .featured-body h2{color:#fff}
+  .band-green .featured-body p{color:rgba(255,255,255,.86)}
+  .band-green .story-gallery figcaption{color:rgba(255,255,255,.75)}
+  .band-green .callout{background:rgba(255,255,255,.08);color:rgba(255,255,255,.9)}
+
+  @media(max-width:720px){
+    .story-gallery,.story-gallery.two{grid-template-columns:1fr 1fr}
+    .story-gallery.two{grid-template-columns:1fr}
+  }
+
+  /* --- blog index cards --- */
+  .story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:.4rem}
+  @media(max-width:980px){.story-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:620px){.story-grid{grid-template-columns:1fr}}
+  .story-link{display:flex;flex-direction:column;text-decoration:none;color:inherit;height:100%;transition:transform .18s ease,box-shadow .18s ease}
+  .story-link:hover{transform:translateY(-5px)}
+  .story-link .card-media{position:relative}
+  .story-link .card-body{display:flex;flex-direction:column;flex:1}
+  .card-ph{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#0f2f28,#16463a);display:flex;align-items:center;justify-content:center;text-align:center;padding:1.2rem}
+  .card-ph span{font-family:var(--font-display);font-weight:600;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);line-height:1.6}
+  .read-more{margin-top:auto;padding-top:1rem;font-family:var(--font-display);font-weight:600;font-size:.82rem;letter-spacing:.03em;color:var(--accent);display:inline-flex;align-items:center;gap:.4rem}
+  .story-link:hover .read-more{gap:.7rem}
+  .badge-draft{position:absolute;top:.8rem;left:.8rem;z-index:3;background:rgba(0,0,0,.55);color:#fff;font-family:var(--font-display);font-weight:600;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:.35rem .6rem;border-radius:999px;backdrop-filter:blur(4px)}
+
+  /* --- article (detail) pages --- */
+  .article-wrap{max-width:900px;margin-inline:auto}
+  .back-link{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--font-display);font-weight:600;font-size:.8rem;letter-spacing:.02em;color:var(--accent);text-decoration:none;margin-bottom:1.4rem}
+  .back-link:hover{gap:.72rem}
+  .back-link svg{width:16px;height:16px}
+  .article-title{margin:.5rem 0 0;font-size:clamp(1.9rem,4vw,2.7rem);line-height:1.12}
+  .article-lead{margin-top:1rem;font-size:1.12rem;line-height:1.6;opacity:.9}
+  .article-hero-media{border-radius:16px;overflow:hidden;margin:1.9rem 0;aspect-ratio:16/9;position:relative}
+  .article-hero-media.tall{aspect-ratio:4/3}
+  .article-hero-media.contain{background:#f4f1e9}
+  .article-hero-media video,.article-hero-media img{width:100%;height:100%;object-fit:cover;display:block}
+  .article-hero-media.contain img{object-fit:contain;padding:1rem}
+  .article-body{font-size:1.05rem;line-height:1.7}
+  .article-body p{margin:1.15rem 0}
+  .article-body h3{font-family:var(--font-display);margin:2rem 0 .5rem;font-size:1.25rem}
+  .draft-note{margin:0 0 1.6rem;padding:.8rem 1.1rem;border:1px dashed var(--accent);border-radius:10px;font-size:.9rem;line-height:1.5;background:rgba(20,140,110,.06)}
+</style>
+</head>
+<body>
+<!--ff:nav--><header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="World Genome Academy home">
+      <span class="dna" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <path d="M6 3c0 6 12 6 12 12M18 3c0 6-12 6-12 12M7 6h10M7 18h10M8.5 9h7M8.5 15h7"/>
+        </svg>
+      </span>
+      <span>World Genome Academy<small>Reading the living library of Earth</small></span>
+    </a>
+    <nav aria-label="Primary">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+        <svg class="bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="curriculum.html">Curriculum</a></li>
+        <li><a href="atlas.html">Atlas</a></li>
+        <li><a href="network.html">Network</a></li>
+        <li><a href="stories.html" aria-current="page">Stories</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header><!--/ff:nav-->
+
+<main>
+  <section class="section">
+    <div class="wrap">
+      <div class="article-wrap reveal">
+        <a class="back-link" href="stories.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          All stories
+        </a>
+        <span class="tag">Instrument · The BioScope</span>
+        <h1 class="article-title">A biomonitoring station you can carry into a forest</h1>
+        <p class="article-lead">A rugged, tripod-mounted sensor pod that watches, listens, and measures on its own, turning a patch of regrowing forest into a continuous stream of ecological data.</p>
+        <div class="article-hero-media tall contain story-media media-contain" data-label="Add image: bioscope-assembly.jpg"><img src="images/bioscope-assembly.jpg" alt="CAD assembly of the BioScope: a sensor housing mounted on a field tripod with labelled components" loading="eager" onerror="this.style.opacity=0"></div>
+        <div class="article-body">
+          <p>Not every ecosystem sits beside a lab bench, so Joey and Jaimin built the BioScope: a rugged, tripod-mounted sensor pod that watches, listens, and measures on its own. Designed as a senior capstone and aimed at reforestation efforts in Costa Rica, it turns a patch of regrowing forest into a continuous stream of ecological data.</p>
+          <p>Cameras and audio capture the animals moving through, onboard AI flags what it sees and hears, and environmental sensors record the conditions they live in. Paired with eDNA sampling, a device like this can watch a whole landscape recover, one day at a time.</p>
+          <figure style="margin:1.8rem 0 0">
+            <div class="story-media media-contain" style="aspect-ratio:16/10" data-label="Add: bioscope-internals.jpg">
+              <img src="images/bioscope-internals.jpg" alt="Electrical integration diagram of the BioScope housing showing the Jetson computer, cameras, microphone, and sensors" loading="lazy" onerror="this.style.opacity=0">
+            </div>
+            <figcaption style="margin-top:.5rem;font-size:.8rem;opacity:.72">Inside the housing: a Jetson edge computer, cameras, microphone, and environmental sensors</figcaption>
+          </figure>
+          <ul class="spec-list">
+            <li>NVIDIA Jetson Orin Nano edge computer</li>
+            <li>Standard and infrared cameras with onboard AI</li>
+            <li>KY-037 microphone for bioacoustics</li>
+            <li>Temperature and humidity sensing</li>
+            <li>Solar panel and dual antennas for off-grid operation</li>
+            <li>Weatherproof housing on a field tripod</li>
+          </ul>
+          <p class="byline">Built by Joey and Jaimin Ellinghuysen, with Simona Weber · Loyola Marymount University</p>
+        </div>
+        <p style="margin-top:2.4rem"><a class="back-link" href="stories.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          All stories
+        </a></p>
+      </div>
+    </div>
+  </section>
+</main>
+<!--ff:footer--><footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <span class="dna" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3c0 6 12 6 12 12M18 3c0 6-12 6-12 12M7 6h10M7 18h10M8.5 9h7M8.5 15h7"/></svg>
+          </span>
+          <span>World Genome Academy</span>
+        </a>
+        <p>Empowering the next generation to explore, understand, and protect the living world through environmental DNA and hands-on genomic science.</p>
+      </div>
+      <div>
+        <h4>About us</h4>
+        <a href="about-us.html">Mission</a>
+        <a href="about-us.html">Vision</a>
+        <a href="about-us.html">Meet the Team</a>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="curriculum.html">Curriculum</a>
+        <a href="stories.html">Stories</a>
+        <a href="atlas.html">Atlas</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="network.html">Join the network</a>
+        <a href="contact.html">Become a partner</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 World Genome Academy. Reading the living library of Earth.</span>
+      <span>Powered by portable sequencing &amp; place-based science.</span>
+    </div>
+  </div>
+</footer><!--/ff:footer-->
+
+<script src="script.js"></script>
+</body>
+</html>
